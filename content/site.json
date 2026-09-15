@@ -358,36 +358,6 @@
       ]
     },
     {
-      "id": "stats",
-      "type": "stats",
-      "visible": false,
-      "style": {
-        "align": "center",
-        "scale": "md",
-        "theme": "dark"
-      },
-      "fields": {
-        "heading": ""
-      },
-      "items": [
-        {
-          "id": "st1",
-          "value": "78%",
-          "label": "Average audience compatibility on accepted matches"
-        },
-        {
-          "id": "st2",
-          "value": "10",
-          "label": "Ranked artists per brief"
-        },
-        {
-          "id": "st3",
-          "value": "3",
-          "label": "Markets scored by default"
-        }
-      ]
-    },
-    {
       "id": "request-access",
       "type": "requestAccess",
       "visible": true,

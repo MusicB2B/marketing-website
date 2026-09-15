@@ -49,7 +49,7 @@ function Entity({ entity, paused }: { entity: EntityData; paused: boolean }) {
 
   return (
     <div
-      className="border-line relative isolate flex min-h-[7.75rem] flex-col justify-end overflow-hidden rounded-xl border p-4"
+      className="border-line relative isolate flex min-h-[9.3rem] flex-col justify-end overflow-hidden rounded-xl border p-4"
       style={{ background: entity.tint }}
     >
       <video
@@ -70,7 +70,7 @@ function Entity({ entity, paused }: { entity: EntityData; paused: boolean }) {
             'linear-gradient(to top, rgba(0,0,0,.52) 0%, rgba(0,0,0,.24) 48%, rgba(0,0,0,.05) 100%)',
         }}
       />
-      <div className="relative z-[2] flex min-h-[5.75rem] w-full flex-col justify-between">
+      <div className="relative z-[2] flex min-h-[6.9rem] w-full flex-col justify-between">
         <p className="text-[0.58rem] font-black tracking-[0.13em] text-white/80 uppercase">
           {entity.label}
         </p>
@@ -93,7 +93,7 @@ function Signals({ label, signals }: { label: string; signals: string[] }) {
       <p className="text-muted mb-2.5 text-[0.62rem] font-black tracking-[0.14em] uppercase">
         {label}
       </p>
-      <div className="flex min-h-[6rem] flex-wrap content-start gap-1.5">
+      <div className="flex min-h-[4rem] flex-wrap content-start gap-1.5">
         {signals.map((signal) => (
           <span
             key={signal}
@@ -204,7 +204,7 @@ export function LiveMatchPanel({
   return (
     <aside
       ref={panelRef}
-      className="border-line rounded-card border bg-white p-5 shadow-[0_28px_80px_-40px_rgba(0,0,0,0.3)] sm:p-6"
+      className="border-line rounded-card flex min-h-[33.5rem] flex-col border bg-white p-5 shadow-[0_28px_80px_-40px_rgba(0,0,0,0.3)] sm:p-6"
       aria-label="Example partnership"
     >
       <div className="mb-5 flex items-start justify-between gap-4">
@@ -281,7 +281,7 @@ export function LiveMatchPanel({
         <Signals label={labels.artistSignals} signals={match.artistSignals} />
       </div>
 
-      <div className="border-line space-y-2 border-t pt-4">
+      <div className="border-line mt-auto space-y-2 border-t pt-4">
         <div className="flex items-center justify-between">
           <span className="text-muted text-[0.66rem] font-black tracking-[0.14em] uppercase">
             {labels.strength}

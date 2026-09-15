@@ -130,6 +130,29 @@ function IconButton({
   );
 }
 
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`border-line-strong text-ink flex h-6 w-6 shrink-0 items-center justify-center rounded-md border bg-white transition-[rotate] duration-150 ${
+        open ? 'rotate-90' : 'rotate-0'
+      }`}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-3 w-3"
+      >
+        <path d="m9 5 7 7-7 7" />
+      </svg>
+    </span>
+  );
+}
+
 /* ----------------------------------------------------------- section panel */
 
 function SectionPanel({
@@ -188,10 +211,10 @@ function SectionPanel({
         <button
           type="button"
           onClick={onToggleOpen}
-          className="flex flex-1 items-center gap-2.5 text-left"
+          className="flex flex-1 items-center gap-3 rounded-lg px-1 py-1 text-left hover:bg-black/[0.03]"
           aria-expanded={open}
         >
-          <span className="text-muted text-[0.8rem]">{open ? '▾' : '▸'}</span>
+          <Chevron open={open} />
           <span className="text-ink text-[0.98rem] font-bold">{spec.label}</span>
           {!section.visible && (
             <span className="text-muted rounded-full bg-black/5 px-2 py-0.5 text-[0.7rem] font-bold tracking-wide uppercase">
@@ -335,9 +358,9 @@ function SiteSettingsPanel({
         type="button"
         onClick={onToggleOpen}
         aria-expanded={open}
-        className="flex w-full items-center gap-2.5 p-3.5 text-left"
+        className="flex w-full items-center gap-3 rounded-lg p-3.5 text-left hover:bg-black/[0.03]"
       >
-        <span className="text-muted text-[0.8rem]">{open ? '▾' : '▸'}</span>
+        <Chevron open={open} />
         <span className="text-ink text-[0.98rem] font-bold">Site settings</span>
       </button>
 
