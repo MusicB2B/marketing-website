@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
       title: meta.title,
       description: meta.description,
       url: siteUrl,
-      siteName: 'fanbased',
+      siteName: 'Fanbased',
       images: meta.ogImage ? [meta.ogImage] : undefined,
       type: 'website',
     },

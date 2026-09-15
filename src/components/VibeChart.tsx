@@ -26,7 +26,7 @@ export function VibeChart() {
     <div className="bg-surface-alt border-line rounded-card border p-6 sm:p-8">
       <h3 className="text-ink text-[1.3rem] font-bold">Brand vs Artist Vibes</h3>
       <p className="text-muted mt-1 text-[0.82rem] font-semibold tracking-[0.1em] uppercase">
-        Real output from the fanbased matching engine
+        Real output from the Fanbased matching engine
       </p>
 
       <div className="mt-5 mb-7 flex gap-5">

@@ -3,6 +3,7 @@ import { Icon } from '@/components/Icon';
 import { RequestAccessForm } from '@/components/RequestAccessForm';
 import { CampaignDemo } from '@/components/CampaignDemo';
 import { VibeChart } from '@/components/VibeChart';
+import { PlatformIcon } from '@/components/PlatformIcon';
 import { MatchCard } from '@/components/MatchCard';
 import type { Section } from '@/types/content';
 
@@ -293,8 +294,9 @@ function DataSources({ section }: { section: Section }) {
         {section.items.map((item) => (
           <div
             key={item.id}
-            className="border-line rounded-card border bg-white px-4 py-6 text-center"
+            className="border-line rounded-card flex flex-col items-center border bg-white px-4 py-6 text-center"
           >
+            {item.icon && <PlatformIcon name={item.icon} className="text-ink mb-3.5 h-7 w-7" />}
             <p className="text-ink text-[1.08rem] font-bold">{item.name}</p>
             <p className="text-muted mt-1.5 text-[0.86rem] leading-snug">{item.detail}</p>
           </div>
@@ -319,7 +321,7 @@ function RequestAccess({ section }: { section: Section }) {
         <div className="mt-9">
           <RequestAccessForm
             submitLabel={f.submitLabel || 'Send request'}
-            successMessage={f.successMessage || 'Thanks — we will be in touch shortly.'}
+            successMessage={f.successMessage || 'Thanks, we will be in touch shortly.'}
           />
         </div>
         {f.footnote && <p className="text-muted mt-5 text-center text-[0.92rem]">{f.footnote}</p>}

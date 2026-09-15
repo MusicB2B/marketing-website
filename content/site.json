@@ -1,7 +1,7 @@
 {
   "version": 1,
   "meta": {
-    "title": "fanbased — Where brands & artists meet",
+    "title": "Fanbased | Where brands & artists meet",
     "description": "We match brands with artists whose audiences actually overlap.",
     "ogImage": "/og.png"
   },
@@ -13,7 +13,7 @@
   },
   "footer": {
     "tagline": "Built for artists, managers, labels, agencies, and brands.",
-    "copyright": "© 2026 fanbased. All rights reserved."
+    "copyright": "© 2026 Fanbased. All rights reserved."
   },
   "sections": [
     {
@@ -28,7 +28,7 @@
       "fields": {
         "eyebrow": "Artists & brands. Louder together.",
         "heading": "Where brands & artists meet.",
-        "subheading": "Data-driven matching across demographics, interests, geography, and the intangibles — vibe, aesthetic, and cultural fit. Explainable results.",
+        "subheading": "Data-driven matching across demographics, interests, geography, and the intangibles: vibe, aesthetic, and cultural fit. Explainable results.",
         "primaryLabel": "Request Access",
         "primaryHref": "#request-access",
         "secondaryLabel": "",
@@ -87,7 +87,7 @@
         {
           "id": "s2",
           "title": "We score the overlap",
-          "body": "The engine compares your campaign against real artist audience data — not follower counts."
+          "body": "The engine compares your campaign against real artist audience data, not follower counts."
         },
         {
           "id": "s3",
@@ -108,8 +108,8 @@
       "fields": {
         "eyebrow": "What makes us different",
         "heading": "Beyond demographics. We match on meaning.",
-        "bodyOne": "Most platforms stop at audience numbers. But a perfect demographic overlap means nothing if the brand tone clashes with the artist's identity. Audiences notice — and so does performance.",
-        "bodyTwo": "fanbased evaluates the qualitative signals that traditional tools can't measure. Brands justify every partnership with transparent reasoning. Artists protect their authenticity with data, not just gut feel."
+        "bodyOne": "Most platforms stop at audience numbers. But a perfect demographic overlap means nothing if the brand tone clashes with the artist's identity. Audiences notice, and so does performance.",
+        "bodyTwo": "Fanbased evaluates the qualitative signals that traditional tools can't measure. Brands justify every partnership with transparent reasoning. Artists protect their authenticity with data, not just gut feel."
       },
       "items": [
         {
@@ -122,11 +122,11 @@
         },
         {
           "id": "d3",
-          "text": "Cultural credibility — not just business alignment"
+          "text": "Cultural credibility, not just business alignment"
         },
         {
           "id": "d4",
-          "text": "Full explainability — see exactly why every match scores the way it does"
+          "text": "Full explainability: see exactly why every match scores the way it does"
         }
       ]
     },
@@ -155,7 +155,7 @@
           "id": "f2",
           "icon": "tag",
           "title": "Brand & artist signals",
-          "body": "See the tags driving a match — wellness culture, indie lifestyle, low-sugar beverage, taste-led audience."
+          "body": "See the tags driving a match: wellness culture, indie lifestyle, low-sugar beverage, taste-led audience."
         },
         {
           "id": "f3",
@@ -200,26 +200,31 @@
       "items": [
         {
           "id": "s1",
+          "icon": "spotify",
           "name": "Spotify",
           "detail": "Listeners & followers"
         },
         {
           "id": "s2",
+          "icon": "instagram",
           "name": "Instagram",
           "detail": "Audience demographics"
         },
         {
           "id": "s3",
+          "icon": "tiktok",
           "name": "TikTok",
           "detail": "Engagement & reach"
         },
         {
           "id": "s4",
+          "icon": "youtube",
           "name": "YouTube",
           "detail": "Views & subscribers"
         },
         {
           "id": "s5",
+          "icon": "analytics",
           "name": "Chartmetric",
           "detail": "Career analytics"
         }
@@ -269,7 +274,7 @@
         "heading": "Find your next partnership.",
         "subheading": "Tell us who you are and what you're working on. We read every one.",
         "submitLabel": "Request Access",
-        "successMessage": "Thanks — we've got it. We'll be in touch shortly.",
+        "successMessage": "Thanks, we've got it. We'll be in touch shortly.",
         "footnote": "No credit card. No commitment."
       },
       "items": []

@@ -70,9 +70,7 @@ export function CampaignDemo() {
           <p className="text-muted mb-2 text-[0.68rem] font-bold tracking-[0.14em] uppercase">
             Campaign brief
           </p>
-          <p className="text-ink mb-6 text-[1.15rem] font-bold">
-            Ray-Ban &ldquo;The Gentleman&rdquo;
-          </p>
+          <p className="text-ink mb-6 text-[1.15rem] font-bold">Sunglasses Launch</p>
 
           <dl className="mb-8 grid grid-cols-2 gap-x-4 gap-y-4">
             {BRIEF.map((row) => (
