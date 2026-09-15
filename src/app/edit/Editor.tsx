@@ -400,6 +400,7 @@ export function Editor({ initial }: { initial: SiteContent }) {
   const [content, setContent] = useState<SiteContent>(initial);
   const [saved, setSaved] = useState<SiteContent>(initial);
   const [status, setStatus] = useState<Status>({ tone: 'idle', message: '' });
+  const [publishNote, setPublishNote] = useState<'none' | 'live' | 'local'>('none');
   const [openId, setOpenId] = useState<string | null>(initial.sections[0]?.id ?? null);
 
   const dirty = useMemo(() => JSON.stringify(content) !== JSON.stringify(saved), [content, saved]);
@@ -439,6 +440,7 @@ export function Editor({ initial }: { initial: SiteContent }) {
       }
       setSaved(content);
       setStatus({ tone: 'ok', message: data.message ?? 'Saved.' });
+      setPublishNote(data.backend === 'github' ? 'live' : 'local');
     } catch {
       setStatus({ tone: 'error', message: 'Could not reach the server. Your changes are safe.' });
     }
@@ -453,6 +455,11 @@ export function Editor({ initial }: { initial: SiteContent }) {
     // so whoever just saved can see what they changed.
     window.location.href = '/';
   }
+
+  const note =
+    publishNote === 'live'
+      ? 'Your changes are saved. They take 30 to 60 seconds to reach the live page, so keep refreshing it until they appear.'
+      : 'Your changes are saved to your local file. Refresh the site to see them.';
 
   const statusColour = {
     idle: 'text-muted',
@@ -484,6 +491,38 @@ export function Editor({ initial }: { initial: SiteContent }) {
           {status.tone === 'saving' ? 'Saving…' : 'Save & publish'}
         </button>
       </header>
+
+      {publishNote !== 'none' && (
+        <div
+          role="status"
+          className="border-brand/30 bg-brand-tint flex items-start gap-3 border-b px-5 py-3.5"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-brand mt-px h-5 w-5 shrink-0"
+            aria-hidden="true"
+          >
+            <path d="M9 18h6M10 21h4" />
+            <path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.8.9.9 1.5l.1.7h5.2l.1-.7c.1-.6.4-1.1.9-1.5A6 6 0 0 0 12 3Z" />
+          </svg>
+          <p className="text-ink flex-1 text-[0.9rem] leading-relaxed">
+            <strong className="font-bold">Please note:</strong> {note}
+          </p>
+          <button
+            type="button"
+            onClick={() => setPublishNote('none')}
+            aria-label="Dismiss"
+            className="text-body hover:text-ink shrink-0 text-[0.85rem] font-semibold"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       <div className="grid flex-1 grid-cols-1 overflow-hidden lg:grid-cols-[minmax(0,26rem)_1fr]">
         <div className="border-line space-y-3 overflow-y-auto border-r p-4">
