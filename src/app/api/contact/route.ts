@@ -1,23 +1,12 @@
 import { NextResponse } from 'next/server';
 import { MailNotConfigured, sendEnquiry } from '@/lib/mail';
+import { clientIp, rateLimit } from '@/lib/rateLimit';
 
 export const runtime = 'nodejs';
 
 const LIMITS = { name: 100, email: 200, subject: 150, message: 4000 };
 
-/** Per-IP throttle. In-memory, so it resets on redeploy and is per-instance —
- *  enough to blunt casual abuse, not a substitute for a real WAF. */
-const RATE_LIMIT = { max: 5, windowMs: 60 * 60 * 1000 };
-const hits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((at) => now - at < RATE_LIMIT.windowMs);
-  recent.push(now);
-  hits.set(ip, recent);
-  if (hits.size > 5000) hits.clear();
-  return recent.length > RATE_LIMIT.max;
-}
+const SUBMIT_LIMIT = { max: 5, windowMs: 60 * 60 * 1000 };
 
 function field(raw: unknown, key: keyof typeof LIMITS): string | null {
   if (typeof raw !== 'string') return null;
@@ -30,15 +19,11 @@ function field(raw: unknown, key: keyof typeof LIMITS): string | null {
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  const ip =
-    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
-    request.headers.get('x-real-ip') ??
-    'unknown';
-
-  if (rateLimited(ip)) {
+  const limited = rateLimit('contact', clientIp(request), SUBMIT_LIMIT);
+  if (limited.limited) {
     return NextResponse.json(
       { error: 'Too many requests. Please try again later.' },
-      { status: 429 },
+      { status: 429, headers: { 'Retry-After': String(limited.retryAfter) } },
     );
   }
 

@@ -1,12 +1,26 @@
 import { NextResponse } from 'next/server';
 import { SESSION_COOKIE, checkPassword, createSessionToken, editorConfigured } from '@/lib/auth';
+import { clientIp, rateLimit, resetLimit } from '@/lib/rateLimit';
 
 export const runtime = 'nodejs';
 
-/** Slows down brute-forcing the shared password a little. */
+/** Slows down guessing, and makes timing differences harder to read. */
 const DELAY_ON_FAILURE_MS = 700;
 
+/** Eight tries, then locked out for fifteen minutes. */
+const LOGIN_LIMIT = { max: 8, windowMs: 15 * 60 * 1000 };
+
 export async function POST(request: Request) {
+  const ip = clientIp(request);
+
+  const limited = rateLimit('editor-login', ip, LOGIN_LIMIT);
+  if (limited.limited) {
+    return NextResponse.json(
+      { error: 'Too many attempts. Try again in a few minutes.' },
+      { status: 429, headers: { 'Retry-After': String(limited.retryAfter) } },
+    );
+  }
+
   let password = '';
   try {
     const body = await request.json();
@@ -38,6 +52,8 @@ export async function POST(request: Request) {
     await new Promise((resolve) => setTimeout(resolve, DELAY_ON_FAILURE_MS));
     return NextResponse.json({ error: 'That password is not right.' }, { status: 401 });
   }
+
+  resetLimit('editor-login', ip);
 
   const { token, maxAge } = createSessionToken();
   const response = NextResponse.json({ ok: true });
