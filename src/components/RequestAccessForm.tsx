@@ -10,9 +10,11 @@ const FIELD =
 export function RequestAccessForm({
   submitLabel,
   successMessage,
+  labels,
 }: {
   submitLabel: string;
   successMessage: string;
+  labels: { name: string; email: string; subject: string; message: string };
 }) {
   const [state, setState] = useState<State>('idle');
   const [error, setError] = useState('');
@@ -81,11 +83,11 @@ export function RequestAccessForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
-          <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">Name</span>
+          <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.name}</span>
           <input name="name" required maxLength={100} autoComplete="name" className={FIELD} />
         </label>
         <label className="block">
-          <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">Email</span>
+          <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.email}</span>
           <input
             name="email"
             type="email"
@@ -98,12 +100,12 @@ export function RequestAccessForm({
       </div>
 
       <label className="mt-4 block">
-        <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">Subject</span>
+        <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.subject}</span>
         <input name="subject" required maxLength={150} className={FIELD} />
       </label>
 
       <label className="mt-4 block">
-        <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">Message</span>
+        <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.message}</span>
         <textarea
           name="message"
           required

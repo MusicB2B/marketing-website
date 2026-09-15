@@ -21,17 +21,27 @@ function Key({ colour, label }: { colour: string; label: string }) {
   );
 }
 
-export function VibeChart() {
+export function VibeChart({
+  title,
+  subtitle,
+  legendCampaign,
+  legendArtist,
+}: {
+  title: string;
+  subtitle: string;
+  legendCampaign: string;
+  legendArtist: string;
+}) {
   return (
     <div className="bg-surface-alt border-line rounded-card border p-6 sm:p-8">
-      <h3 className="text-ink text-[1.3rem] font-bold">Brand vs Artist Vibes</h3>
+      <h3 className="text-ink text-[1.3rem] font-bold">{title}</h3>
       <p className="text-muted mt-1 text-[0.82rem] font-semibold tracking-[0.1em] uppercase">
-        Real output from the Fanbased matching engine
+        {subtitle}
       </p>
 
       <div className="mt-5 mb-7 flex gap-5">
-        <Key colour="bg-campaign" label="Campaign" />
-        <Key colour="bg-brand" label="Artist" />
+        <Key colour="bg-campaign" label={legendCampaign} />
+        <Key colour="bg-brand" label={legendArtist} />
       </div>
 
       <div className="space-y-5">

@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Footer } from '@/components/Chrome';
 import { SectionRenderer } from '@/components/sections';
-import { SECTION_SCHEMA } from '@/lib/schema';
+import { SECTION_SCHEMA, SITE_SETTINGS } from '@/lib/schema';
 import type { FieldSpec, SectionSpec } from '@/lib/schema';
 import type { Section, SiteContent } from '@/types/content';
 
@@ -318,6 +318,59 @@ function SectionPanel({
   );
 }
 
+function SiteSettingsPanel({
+  content,
+  open,
+  onToggleOpen,
+  onChange,
+}: {
+  content: SiteContent;
+  open: boolean;
+  onToggleOpen: () => void;
+  onChange: (next: SiteContent) => void;
+}) {
+  return (
+    <div className="border-line rounded-card border bg-white">
+      <button
+        type="button"
+        onClick={onToggleOpen}
+        aria-expanded={open}
+        className="flex w-full items-center gap-2.5 p-3.5 text-left"
+      >
+        <span className="text-muted text-[0.8rem]">{open ? '▾' : '▸'}</span>
+        <span className="text-ink text-[0.98rem] font-bold">Site settings</span>
+      </button>
+
+      {open && (
+        <div className="border-line space-y-5 border-t p-4">
+          {SITE_SETTINGS.map((group) => (
+            <div key={group.group} className="space-y-4">
+              <p className="text-muted text-[0.75rem] font-bold tracking-[0.08em] uppercase">
+                {group.label}
+              </p>
+              {group.fields.map((field) => (
+                <Field
+                  key={field.key}
+                  spec={field}
+                  value={
+                    (content[group.group] as unknown as Record<string, string>)[field.key] ?? ''
+                  }
+                  onChange={(value) =>
+                    onChange({
+                      ...content,
+                      [group.group]: { ...content[group.group], [field.key]: value },
+                    })
+                  }
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ----------------------------------------------------------------- editor */
 
 export function Editor({ initial }: { initial: SiteContent }) {
@@ -410,6 +463,13 @@ export function Editor({ initial }: { initial: SiteContent }) {
             Changes preview instantly on the right. Nothing goes live until you press{' '}
             <strong className="text-ink">Save &amp; publish</strong>.
           </p>
+
+          <SiteSettingsPanel
+            content={content}
+            open={openId === '__site__'}
+            onToggleOpen={() => setOpenId(openId === '__site__' ? null : '__site__')}
+            onChange={setContent}
+          />
 
           {content.sections.map((section, index) => (
             <SectionPanel

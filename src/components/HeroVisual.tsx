@@ -1,4 +1,6 @@
 import { LiveMatchPanel } from '@/components/LiveMatchPanel';
+import type { PanelLabels } from '@/components/LiveMatchPanel';
+import type { SectionItem } from '@/types/content';
 
 const DEFAULT_DISCLAIMER =
   'Illustrative examples only. The partnerships shown are hypothetical demonstrations of how the ' +
@@ -41,11 +43,17 @@ export function HeroVisual({
   variant,
   image,
   disclaimer,
+  labels,
+  items,
 }: {
   variant: string;
   image: string;
   disclaimer: string;
+  labels: PanelLabels;
+  items: SectionItem[];
 }) {
   if (variant === 'image') return <ImageFrame src={image} />;
-  return <LiveMatchPanel disclaimer={disclaimer || DEFAULT_DISCLAIMER} />;
+  return (
+    <LiveMatchPanel disclaimer={disclaimer || DEFAULT_DISCLAIMER} labels={labels} items={items} />
+  );
 }

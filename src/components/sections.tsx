@@ -99,6 +99,15 @@ function Hero({ section }: { section: Section }) {
             variant={f.visual || 'livePanel'}
             image={f.visualImage || ''}
             disclaimer={f.disclaimer || ''}
+            items={section.items}
+            labels={{
+              eyebrow: f.panelEyebrow || 'Example Partnership',
+              score: f.panelScoreLabel || 'Audience Compatibility',
+              brandSignals: f.panelBrandLabel || 'Brand Signals',
+              artistSignals: f.panelArtistLabel || 'Artist Signals',
+              strength: f.panelStrengthLabel || 'Partnership Strength',
+              regions: f.panelRegionsLabel || 'Primary Regions',
+            }}
           />
         </div>
       </div>
@@ -144,10 +153,6 @@ function HowItWorks({ section }: { section: Section }) {
           </li>
         ))}
       </ol>
-
-      <div className="mt-12">
-        <CampaignDemo />
-      </div>
     </Shell>
   );
 }
@@ -241,6 +246,14 @@ function AudienceSplit({ section }: { section: Section }) {
   );
 }
 
+function CampaignDemoSection({ section }: { section: Section }) {
+  return (
+    <Shell section={section} className="!pt-0">
+      <CampaignDemo section={section} />
+    </Shell>
+  );
+}
+
 function Differentiator({ section }: { section: Section }) {
   const f = section.fields;
   return (
@@ -275,7 +288,12 @@ function Differentiator({ section }: { section: Section }) {
           </ul>
         </div>
 
-        <VibeChart />
+        <VibeChart
+          title={f.chartTitle || 'Brand vs Artist Vibes'}
+          subtitle={f.chartSubtitle || ''}
+          legendCampaign={f.chartLegendCampaign || 'Campaign'}
+          legendArtist={f.chartLegendArtist || 'Artist'}
+        />
       </div>
     </Shell>
   );
@@ -326,6 +344,12 @@ function RequestAccess({ section }: { section: Section }) {
           <RequestAccessForm
             submitLabel={f.submitLabel || 'Send request'}
             successMessage={f.successMessage || 'Thanks, we will be in touch shortly.'}
+            labels={{
+              name: f.nameLabel || 'Name',
+              email: f.emailLabel || 'Email',
+              subject: f.subjectLabel || 'Subject',
+              message: f.messageLabel || 'Message',
+            }}
           />
         </div>
         {f.footnote && <p className="text-muted mt-5 text-center text-[0.92rem]">{f.footnote}</p>}
@@ -345,6 +369,7 @@ const RENDERERS = {
   audienceSplit: AudienceSplit,
   differentiator: Differentiator,
   dataSources: DataSources,
+  campaignDemo: CampaignDemoSection,
 } as const;
 
 export function SectionRenderer({ section }: { section: Section }) {

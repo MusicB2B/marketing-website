@@ -36,9 +36,67 @@
         "footnote": "We're onboarding brands and artists now.",
         "visual": "livePanel",
         "visualImage": "",
-        "disclaimer": "Illustrative examples only. The partnerships shown are hypothetical demonstrations of how the Fanbased matching engine scores audience alignment. They are not live, proposed, or completed partnerships, and Fanbased has no commercial relationship with, or endorsement from, any brand or artist shown. All names, trademarks and footage remain the property of their respective owners. Scores and signals are generated from sample data for demonstration purposes."
+        "disclaimer": "Illustrative examples only. The partnerships shown are hypothetical demonstrations of how the Fanbased matching engine scores audience alignment. They are not live, proposed, or completed partnerships, and Fanbased has no commercial relationship with, or endorsement from, any brand or artist shown. All names, trademarks and footage remain the property of their respective owners. Scores and signals are generated from sample data for demonstration purposes.",
+        "panelEyebrow": "Example Partnership",
+        "panelScoreLabel": "Audience Compatibility",
+        "panelBrandLabel": "Brand Signals",
+        "panelArtistLabel": "Artist Signals",
+        "panelStrengthLabel": "Partnership Strength",
+        "panelRegionsLabel": "Primary Regions"
       },
-      "items": []
+      "items": [
+        {
+          "id": "ex1",
+          "status": "High Resonance",
+          "score": "89",
+          "brandLabel": "Brand Campaign",
+          "brandName": "Adidas Originals",
+          "brandSubtitle": "Streetwear / Sportswear",
+          "brandVideo": "/matches/adidas-campaign.mp4",
+          "brandSignals": "Streetwear, Wellness, Global youth culture",
+          "artistLabel": "Artist Audience",
+          "artistName": "Fred Again",
+          "artistSubtitle": "Electronic / Live Culture",
+          "artistVideo": "/matches/fred-again-live.mp4",
+          "artistSignals": "Gen Z urban, Live music culture, High engagement",
+          "fit": "Strong",
+          "regions": "UK, US, EU"
+        },
+        {
+          "id": "ex2",
+          "status": "Lifestyle Fit",
+          "score": "78",
+          "brandLabel": "Beverage Campaign",
+          "brandName": "Spindrift",
+          "brandSubtitle": "Sparkling Water",
+          "brandVideo": "/matches/spindrift-campaign.mp4",
+          "brandSignals": "Wellness culture, Soft premium, Low-sugar beverage",
+          "artistLabel": "Artist Audience",
+          "artistName": "Men I Trust",
+          "artistSubtitle": "Indie / Alternative",
+          "artistVideo": "/matches/men-i-trust-live.mp4",
+          "artistSignals": "Indie lifestyle, Taste-led audience, Outdoor moments",
+          "fit": "Promising",
+          "regions": "US, Canada, EU"
+        },
+        {
+          "id": "ex3",
+          "status": "Audience Fit",
+          "score": "74",
+          "brandLabel": "Whiskey Campaign",
+          "brandName": "Bulleit Bourbon",
+          "brandSubtitle": "American Whiskey",
+          "brandVideo": "/matches/bulleit-campaign.mp4",
+          "brandSignals": "Bar occasions, Premium whiskey, Authentic storytelling",
+          "artistLabel": "Artist Audience",
+          "artistName": "Carter Faith",
+          "artistSubtitle": "Country / Americana",
+          "artistVideo": "/matches/carter-faith.mp4",
+          "artistSignals": "Country audience, Americana culture, Live music fans",
+          "fit": "Emerging",
+          "regions": "US"
+        }
+      ]
     },
     {
       "id": "who",
@@ -100,6 +158,68 @@
       ]
     },
     {
+      "id": "brief",
+      "type": "campaignDemo",
+      "visible": true,
+      "style": {
+        "align": "left",
+        "scale": "md",
+        "theme": "tint"
+      },
+      "fields": {
+        "briefLabel": "Campaign brief",
+        "campaignName": "Sunglasses Launch",
+        "row1Label": "Market position",
+        "row1Value": "Premium",
+        "row2Label": "Primary age",
+        "row2Value": "18–24",
+        "row3Label": "Gender split",
+        "row3Value": "50/50",
+        "row4Label": "Target markets",
+        "row4Value": "GB, US, FR",
+        "toneLabel": "Brand tone",
+        "tones": "Confident, Refined, Creative, Understated, Culturally relevant",
+        "matchesHeading": "Ranked artist matches",
+        "matchesCount": "Showing 4 of 10",
+        "scoreLabel": "Match score",
+        "topLabel": "Top match"
+      },
+      "items": [
+        {
+          "id": "m1",
+          "initials": "KR",
+          "name": "Kojey Radical",
+          "note": "Strong female GB alignment",
+          "tags": "Female 29%, GB 93%, Vibe: Bold",
+          "score": "68.4%"
+        },
+        {
+          "id": "m2",
+          "initials": "O+",
+          "name": "Omar+",
+          "note": "Strong female GB alignment",
+          "tags": "Female 32%, GB 94%, Vibe: Elegant",
+          "score": "68.4%"
+        },
+        {
+          "id": "m3",
+          "initials": "KN",
+          "name": "Knucks",
+          "note": "Strong male GB alignment",
+          "tags": "Male 39%, GB 96%, Vibe: Urban",
+          "score": "67.9%"
+        },
+        {
+          "id": "m4",
+          "initials": "RB",
+          "name": "RUBII",
+          "note": "Strong female GB alignment",
+          "tags": "Female 29%, GB 73%",
+          "score": "66.7%"
+        }
+      ]
+    },
+    {
       "id": "different",
       "type": "differentiator",
       "visible": true,
@@ -112,7 +232,11 @@
         "eyebrow": "What makes us different",
         "heading": "Beyond demographics. We match on meaning.",
         "bodyOne": "Most platforms stop at audience numbers. But a perfect demographic overlap means nothing if the brand tone clashes with the artist's identity. Audiences notice, and so does performance.",
-        "bodyTwo": "Fanbased evaluates the qualitative signals that traditional tools can't measure. Brands justify every partnership with transparent reasoning. Artists protect their authenticity with data, not just gut feel."
+        "bodyTwo": "Fanbased evaluates the qualitative signals that traditional tools can't measure. Brands justify every partnership with transparent reasoning. Artists protect their authenticity with data, not just gut feel.",
+        "chartTitle": "Brand vs Artist Vibes",
+        "chartSubtitle": "Real output from the Fanbased matching engine",
+        "chartLegendCampaign": "Campaign",
+        "chartLegendArtist": "Artist"
       },
       "items": [
         {
@@ -278,7 +402,11 @@
         "subheading": "Tell us who you are and what you're working on. We read every one.",
         "submitLabel": "Request Access",
         "successMessage": "Thanks, we've got it. We'll be in touch shortly.",
-        "footnote": "No credit card. No commitment."
+        "footnote": "No credit card. No commitment.",
+        "nameLabel": "Name",
+        "emailLabel": "Email",
+        "subjectLabel": "Subject",
+        "messageLabel": "Message"
       },
       "items": []
     }

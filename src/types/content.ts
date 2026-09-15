@@ -16,7 +16,8 @@ export type SectionType =
   | 'requestAccess'
   | 'audienceSplit'
   | 'differentiator'
-  | 'dataSources';
+  | 'dataSources'
+  | 'campaignDemo';
 
 /** Constrained presentation knobs. Deliberately a small set of tokens rather than
  *  free-form CSS, so the page cannot be made to look broken. */

@@ -1,8 +1,9 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { EXAMPLE_MATCHES, ROTATE_MS } from '@/lib/exampleMatches';
+import { ROTATE_MS, toExampleMatches } from '@/lib/exampleMatches';
 import type { Entity as EntityData } from '@/lib/exampleMatches';
+import type { SectionItem } from '@/types/content';
 
 /**
  * The rotating example partnership from the platform, rebuilt for the
@@ -106,7 +107,25 @@ function Signals({ label, signals }: { label: string; signals: string[] }) {
   );
 }
 
-export function LiveMatchPanel({ disclaimer }: { disclaimer: string }) {
+export interface PanelLabels {
+  eyebrow: string;
+  score: string;
+  brandSignals: string;
+  artistSignals: string;
+  strength: string;
+  regions: string;
+}
+
+export function LiveMatchPanel({
+  disclaimer,
+  labels,
+  items,
+}: {
+  disclaimer: string;
+  labels: PanelLabels;
+  items: SectionItem[];
+}) {
+  const matches = toExampleMatches(items);
   const [index, setIndex] = useState(0);
   const [infoOpen, setInfoOpen] = useState(false);
   const [score, setScore] = useState(0);
@@ -116,11 +135,11 @@ export function LiveMatchPanel({ disclaimer }: { disclaimer: string }) {
   const infoRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
-  const match = EXAMPLE_MATCHES[index]!;
+  const match = matches[index % matches.length]!;
 
   const next = useCallback(() => {
-    setIndex((current) => (current + 1) % EXAMPLE_MATCHES.length);
-  }, []);
+    setIndex((current) => (current + 1) % matches.length);
+  }, [matches.length]);
 
   // Only run while the panel is actually on screen and the tab is focused.
   useEffect(() => {
@@ -191,7 +210,7 @@ export function LiveMatchPanel({ disclaimer }: { disclaimer: string }) {
       <div className="mb-5 flex items-start justify-between gap-4">
         <div className="flex items-center gap-2">
           <p className="text-muted text-[0.66rem] font-black tracking-[0.16em] uppercase">
-            Example Partnership
+            {labels.eyebrow}
           </p>
           <button
             type="button"
@@ -237,7 +256,7 @@ export function LiveMatchPanel({ disclaimer }: { disclaimer: string }) {
 
       <div className="mb-4">
         <div className="mb-2.5 flex items-baseline justify-between gap-4">
-          <span className="text-ink text-[0.8rem] font-black">Audience Compatibility</span>
+          <span className="text-ink text-[0.8rem] font-black">{labels.score}</span>
           <span className="text-brand text-[2.25rem] leading-none font-black tracking-[-0.04em] tabular-nums">
             {score}%
           </span>
@@ -258,20 +277,20 @@ export function LiveMatchPanel({ disclaimer }: { disclaimer: string }) {
       </div>
 
       <div className="mb-5 grid grid-cols-2 gap-5">
-        <Signals label="Brand Signals" signals={match.brandSignals} />
-        <Signals label="Artist Signals" signals={match.artistSignals} />
+        <Signals label={labels.brandSignals} signals={match.brandSignals} />
+        <Signals label={labels.artistSignals} signals={match.artistSignals} />
       </div>
 
       <div className="border-line space-y-2 border-t pt-4">
         <div className="flex items-center justify-between">
           <span className="text-muted text-[0.66rem] font-black tracking-[0.14em] uppercase">
-            Partnership Strength
+            {labels.strength}
           </span>
           <span className="text-ink text-[0.9rem] font-black">{match.fit}</span>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-muted text-[0.66rem] font-black tracking-[0.14em] uppercase">
-            Primary Regions
+            {labels.regions}
           </span>
           <span className="text-ink text-[0.9rem] font-black">{match.regions}</span>
         </div>

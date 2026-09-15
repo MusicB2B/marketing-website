@@ -26,76 +26,57 @@ export interface ExampleMatch {
   regions: string;
 }
 
-export const EXAMPLE_MATCHES: ExampleMatch[] = [
-  {
-    id: 'adidas-fred-again',
-    status: 'High Resonance',
-    score: 89,
+/** Fallback tints, keyed by video file, so a slow load is never a black box. */
+const TINTS: Record<string, string> = {
+  'adidas-campaign': 'linear-gradient(135deg,#3f4550,#1b1f27)',
+  'fred-again-live': 'linear-gradient(135deg,#4a3f6b,#1d1a2b)',
+  'spindrift-campaign': 'linear-gradient(135deg,#e8c93f,#c9a227)',
+  'men-i-trust-live': 'linear-gradient(135deg,#2b2f3a,#11141b)',
+  'bulleit-campaign': 'linear-gradient(135deg,#a8642a,#5d3416)',
+  'carter-faith': 'linear-gradient(135deg,#8a6b4f,#3a2a1d)',
+};
+
+function tintFor(video: string): string {
+  const stem =
+    video
+      .split('/')
+      .pop()
+      ?.replace(/\.[^.]+$/, '') ?? '';
+  return TINTS[stem] ?? 'linear-gradient(135deg,#3f4550,#1b1f27)';
+}
+
+function splitList(value: string): string[] {
+  return value
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+/** Maps the editable rows from content/site.json onto what the panel renders. */
+export function toExampleMatches(items: { id: string; [key: string]: string }[]): ExampleMatch[] {
+  return items.map((item) => ({
+    id: item.id,
+    status: item.status ?? '',
+    score: Math.max(0, Math.min(100, Number(item.score) || 0)),
     brand: {
-      label: 'Brand Campaign',
-      name: 'Adidas Originals',
-      subtitle: 'Streetwear / Sportswear',
-      video: '/matches/adidas-campaign.mp4',
-      tint: 'linear-gradient(135deg,#3f4550,#1b1f27)',
+      label: item.brandLabel ?? '',
+      name: item.brandName ?? '',
+      subtitle: item.brandSubtitle ?? '',
+      video: item.brandVideo ?? '',
+      tint: tintFor(item.brandVideo ?? ''),
     },
     artist: {
-      label: 'Artist Audience',
-      name: 'Fred Again',
-      subtitle: 'Electronic / Live Culture',
-      video: '/matches/fred-again-live.mp4',
-      tint: 'linear-gradient(135deg,#4a3f6b,#1d1a2b)',
+      label: item.artistLabel ?? '',
+      name: item.artistName ?? '',
+      subtitle: item.artistSubtitle ?? '',
+      video: item.artistVideo ?? '',
+      tint: tintFor(item.artistVideo ?? ''),
     },
-    brandSignals: ['Streetwear', 'Wellness', 'Global youth culture'],
-    artistSignals: ['Gen Z urban', 'Live music culture', 'High engagement'],
-    fit: 'Strong',
-    regions: 'UK, US, EU',
-  },
-  {
-    id: 'spindrift-men-i-trust',
-    status: 'Lifestyle Fit',
-    score: 78,
-    brand: {
-      label: 'Beverage Campaign',
-      name: 'Spindrift',
-      subtitle: 'Sparkling Water',
-      video: '/matches/spindrift-campaign.mp4',
-      tint: 'linear-gradient(135deg,#e8c93f,#c9a227)',
-    },
-    artist: {
-      label: 'Artist Audience',
-      name: 'Men I Trust',
-      subtitle: 'Indie / Alternative',
-      video: '/matches/men-i-trust-live.mp4',
-      tint: 'linear-gradient(135deg,#2b2f3a,#11141b)',
-    },
-    brandSignals: ['Wellness culture', 'Soft premium', 'Low-sugar beverage'],
-    artistSignals: ['Indie lifestyle', 'Taste-led audience', 'Outdoor moments'],
-    fit: 'Promising',
-    regions: 'US, Canada, EU',
-  },
-  {
-    id: 'bulleit-carter-faith',
-    status: 'Audience Fit',
-    score: 74,
-    brand: {
-      label: 'Whiskey Campaign',
-      name: 'Bulleit Bourbon',
-      subtitle: 'American Whiskey',
-      video: '/matches/bulleit-campaign.mp4',
-      tint: 'linear-gradient(135deg,#a8642a,#5d3416)',
-    },
-    artist: {
-      label: 'Artist Audience',
-      name: 'Carter Faith',
-      subtitle: 'Country / Americana',
-      video: '/matches/carter-faith.mp4',
-      tint: 'linear-gradient(135deg,#8a6b4f,#3a2a1d)',
-    },
-    brandSignals: ['Bar occasions', 'Premium whiskey', 'Authentic storytelling'],
-    artistSignals: ['Country audience', 'Americana culture', 'Live music fans'],
-    fit: 'Emerging',
-    regions: 'US',
-  },
-];
+    brandSignals: splitList(item.brandSignals ?? ''),
+    artistSignals: splitList(item.artistSignals ?? ''),
+    fit: item.fit ?? '',
+    regions: item.regions ?? '',
+  }));
+}
 
 export const ROTATE_MS = 7000;
