@@ -59,5 +59,16 @@ export function verifySessionToken(token: string | undefined): boolean {
 /** Whether the current request carries a valid editor session. */
 export async function isEditor(): Promise<boolean> {
   const store = await cookies();
-  return verifySessionToken(store.get(SESSION_COOKIE)?.value);
+  try {
+    return verifySessionToken(store.get(SESSION_COOKIE)?.value);
+  } catch {
+    // Not configured yet: show the login screen rather than a 500. Signing in
+    // then returns a message naming the missing variable.
+    return false;
+  }
+}
+
+/** Whether the editor has everything it needs to let anyone in. */
+export function editorConfigured(): boolean {
+  return Boolean(process.env.EDITOR_PASSWORD && process.env.EDITOR_SESSION_SECRET);
 }

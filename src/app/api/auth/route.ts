@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { SESSION_COOKIE, checkPassword, createSessionToken } from '@/lib/auth';
+import { SESSION_COOKIE, checkPassword, createSessionToken, editorConfigured } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
@@ -13,6 +13,14 @@ export async function POST(request: Request) {
     password = typeof body?.password === 'string' ? body.password : '';
   } catch {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
+  }
+
+  if (!editorConfigured()) {
+    console.error('Editor auth misconfigured: set EDITOR_PASSWORD and EDITOR_SESSION_SECRET.');
+    return NextResponse.json(
+      { error: 'The editor is not configured yet. A developer needs to set its password.' },
+      { status: 503 },
+    );
   }
 
   let valid = false;
