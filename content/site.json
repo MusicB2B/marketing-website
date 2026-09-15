@@ -28,14 +28,41 @@
       "fields": {
         "eyebrow": "Artists & brands. Louder together.",
         "heading": "Where brands & artists meet.",
-        "subheading": "We match brands with artists whose audiences actually overlap.",
+        "subheading": "Data-driven matching across demographics, interests, geography, and the intangibles — vibe, aesthetic, and cultural fit. Explainable results.",
         "primaryLabel": "Request Access",
         "primaryHref": "#request-access",
         "secondaryLabel": "",
         "secondaryHref": "",
-        "footnote": "Built for artists, managers, labels, agencies, and brands."
+        "footnote": "We're onboarding brands and artists now."
       },
       "items": []
+    },
+    {
+      "id": "who",
+      "type": "audienceSplit",
+      "visible": true,
+      "style": {
+        "align": "left",
+        "scale": "md",
+        "theme": "tint"
+      },
+      "fields": {
+        "heading": "Who it's for"
+      },
+      "items": [
+        {
+          "id": "w1",
+          "icon": "target",
+          "label": "Brands",
+          "body": "Find artists whose audiences are already your customers."
+        },
+        {
+          "id": "w2",
+          "icon": "users",
+          "label": "Artists",
+          "body": "Get discovered by brands that genuinely fit your fanbase."
+        }
+      ]
     },
     {
       "id": "how",
@@ -49,7 +76,7 @@
       "fields": {
         "eyebrow": "How it works",
         "heading": "From brief to shortlist in minutes.",
-        "subheading": "Tell us the campaign. The matching engine does the rest."
+        "subheading": "You define the campaign and ideal audience. Our engine scores and ranks artists by real fanbase alignment."
       },
       "items": [
         {
@@ -66,6 +93,40 @@
           "id": "s3",
           "title": "Get a ranked shortlist",
           "body": "Every match comes with a score and the signals behind it, so you can defend the pick."
+        }
+      ]
+    },
+    {
+      "id": "different",
+      "type": "differentiator",
+      "visible": true,
+      "style": {
+        "align": "left",
+        "scale": "md",
+        "theme": "light"
+      },
+      "fields": {
+        "eyebrow": "What makes us different",
+        "heading": "Beyond demographics. We match on meaning.",
+        "bodyOne": "Most platforms stop at audience numbers. But a perfect demographic overlap means nothing if the brand tone clashes with the artist's identity. Audiences notice — and so does performance.",
+        "bodyTwo": "fanbased evaluates the qualitative signals that traditional tools can't measure. Brands justify every partnership with transparent reasoning. Artists protect their authenticity with data, not just gut feel."
+      },
+      "items": [
+        {
+          "id": "d1",
+          "text": "Vibe and emotional tone alignment"
+        },
+        {
+          "id": "d2",
+          "text": "Visual language and aesthetic fit"
+        },
+        {
+          "id": "d3",
+          "text": "Cultural credibility — not just business alignment"
+        },
+        {
+          "id": "d4",
+          "text": "Full explainability — see exactly why every match scores the way it does"
         }
       ]
     },
@@ -119,6 +180,48 @@
           "icon": "exchange",
           "title": "Built for both sides",
           "body": "Brands find artists. Artists, managers and labels find brands. Same engine, both directions."
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "type": "dataSources",
+      "visible": true,
+      "style": {
+        "align": "center",
+        "scale": "md",
+        "theme": "tint"
+      },
+      "fields": {
+        "eyebrow": "Built on real data",
+        "heading": "The platforms that matter.",
+        "subheading": "Real-time audience data, not self-reported numbers."
+      },
+      "items": [
+        {
+          "id": "s1",
+          "name": "Spotify",
+          "detail": "Listeners & followers"
+        },
+        {
+          "id": "s2",
+          "name": "Instagram",
+          "detail": "Audience demographics"
+        },
+        {
+          "id": "s3",
+          "name": "TikTok",
+          "detail": "Engagement & reach"
+        },
+        {
+          "id": "s4",
+          "name": "YouTube",
+          "detail": "Views & subscribers"
+        },
+        {
+          "id": "s5",
+          "name": "Chartmetric",
+          "detail": "Career analytics"
         }
       ]
     },

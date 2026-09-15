@@ -118,6 +118,52 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
       ],
     },
   },
+  audienceSplit: {
+    label: 'Who it is for',
+    description: 'The two-column split explaining the product to each side.',
+    fields: [{ key: 'heading', label: 'Heading', input: 'text' }],
+    item: {
+      noun: 'side',
+      max: 2,
+      fields: [
+        { key: 'label', label: 'Audience', input: 'text' },
+        { key: 'body', label: 'What they get', input: 'textarea' },
+        { key: 'icon', label: 'Icon', input: 'select', options: [...ICON_OPTIONS] },
+      ],
+    },
+  },
+  differentiator: {
+    label: 'What makes us different',
+    description: 'The argument for matching on meaning, beside the vibe chart.',
+    fields: [
+      { key: 'eyebrow', label: 'Eyebrow', input: 'text' },
+      { key: 'heading', label: 'Heading', input: 'text' },
+      { key: 'bodyOne', label: 'First paragraph', input: 'textarea' },
+      { key: 'bodyTwo', label: 'Second paragraph', input: 'textarea' },
+    ],
+    item: {
+      noun: 'point',
+      max: 6,
+      fields: [{ key: 'text', label: 'Point', input: 'text' }],
+    },
+  },
+  dataSources: {
+    label: 'Built on real data',
+    description: 'The platforms the engine draws from.',
+    fields: [
+      { key: 'eyebrow', label: 'Eyebrow', input: 'text' },
+      { key: 'heading', label: 'Heading', input: 'text' },
+      { key: 'subheading', label: 'Intro', input: 'textarea' },
+    ],
+    item: {
+      noun: 'source',
+      max: 8,
+      fields: [
+        { key: 'name', label: 'Platform', input: 'text' },
+        { key: 'detail', label: 'What we use', input: 'text' },
+      ],
+    },
+  },
   requestAccess: {
     label: 'Request access form',
     description: 'The enquiry form. Submissions are emailed to the team inbox.',

@@ -1,6 +1,8 @@
 import { Button, Eyebrow, Logo } from '@/components/Brand';
 import { Icon } from '@/components/Icon';
 import { RequestAccessForm } from '@/components/RequestAccessForm';
+import { CampaignDemo } from '@/components/CampaignDemo';
+import { VibeChart } from '@/components/VibeChart';
 import { MatchCard } from '@/components/MatchCard';
 import type { Section } from '@/types/content';
 
@@ -137,6 +139,10 @@ function HowItWorks({ section }: { section: Section }) {
           </li>
         ))}
       </ol>
+
+      <div className="mt-12">
+        <CampaignDemo />
+      </div>
     </Shell>
   );
 }
@@ -207,6 +213,97 @@ function Cta({ section }: { section: Section }) {
   );
 }
 
+function AudienceSplit({ section }: { section: Section }) {
+  return (
+    <Shell section={section}>
+      {section.fields.heading && <h2 className="sr-only">{section.fields.heading}</h2>}
+      <div className="grid gap-5 md:grid-cols-2">
+        {section.items.map((item) => (
+          <div key={item.id} className="border-line rounded-card border bg-white p-8">
+            {item.icon && (
+              <span className="bg-brand-tint text-brand mb-5 flex h-11 w-11 items-center justify-center rounded-xl">
+                <Icon name={item.icon} className="h-[1.45rem] w-[1.45rem]" />
+              </span>
+            )}
+            <p className="text-brand mb-2 text-[0.78rem] font-bold tracking-[0.16em] uppercase">
+              {item.label}
+            </p>
+            <p className="text-ink text-[1.35rem] leading-snug font-bold">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </Shell>
+  );
+}
+
+function Differentiator({ section }: { section: Section }) {
+  const f = section.fields;
+  return (
+    <Shell section={section}>
+      <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <Eyebrow>{f.eyebrow}</Eyebrow>
+          <Heading section={section}>{f.heading}</Heading>
+          {f.bodyOne && <p className="mt-6 text-[1.08rem] leading-relaxed">{f.bodyOne}</p>}
+          {f.bodyTwo && <p className="mt-4 text-[1.08rem] leading-relaxed">{f.bodyTwo}</p>}
+
+          <ul className="mt-8 space-y-3.5">
+            {section.items.map((item) => (
+              <li key={item.id} className="flex gap-3">
+                <span className="bg-brand-tint text-brand mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-3.5 w-3.5"
+                    aria-hidden="true"
+                  >
+                    <path d="m5 12 5 5L19 8" />
+                  </svg>
+                </span>
+                <span className="text-[1.02rem] leading-relaxed">{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <VibeChart />
+      </div>
+    </Shell>
+  );
+}
+
+function DataSources({ section }: { section: Section }) {
+  return (
+    <Shell section={section}>
+      <div className="text-center">
+        <Eyebrow>{section.fields.eyebrow}</Eyebrow>
+        <Heading section={section}>{section.fields.heading}</Heading>
+        {section.fields.subheading && (
+          <p className="mx-auto mt-4 max-w-xl text-[1.08rem] leading-relaxed">
+            {section.fields.subheading}
+          </p>
+        )}
+      </div>
+
+      <div className="mt-10 grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        {section.items.map((item) => (
+          <div
+            key={item.id}
+            className="border-line rounded-card border bg-white px-4 py-6 text-center"
+          >
+            <p className="text-ink text-[1.08rem] font-bold">{item.name}</p>
+            <p className="text-muted mt-1.5 text-[0.86rem] leading-snug">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </Shell>
+  );
+}
+
 function RequestAccess({ section }: { section: Section }) {
   const f = section.fields;
   return (
@@ -239,6 +336,9 @@ const RENDERERS = {
   stats: Stats,
   cta: Cta,
   requestAccess: RequestAccess,
+  audienceSplit: AudienceSplit,
+  differentiator: Differentiator,
+  dataSources: DataSources,
 } as const;
 
 export function SectionRenderer({ section }: { section: Section }) {
