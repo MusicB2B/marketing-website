@@ -1,4 +1,5 @@
 import { SECTION_SCHEMA, SECTION_TYPES } from '@/lib/schema';
+import type { FieldSpec } from '@/lib/schema';
 import type { Section, SectionItem, SectionStyle, SiteContent } from '@/types/content';
 
 /**
@@ -46,6 +47,18 @@ function parseStyle(value: unknown, label: string): SectionStyle {
   };
 }
 
+/** A `select` field may only hold one of its declared option values. */
+function fieldValue(raw: unknown, field: FieldSpec, label: string): string {
+  const parsed = str(raw ?? '', label);
+  if (field.input !== 'select') return parsed;
+  const allowed = field.options?.map((option) => option.value) ?? [];
+  if (parsed === '') return allowed[0] ?? '';
+  if (!allowed.includes(parsed)) {
+    throw new ValidationError(`${label} must be one of: ${allowed.join(', ')}`);
+  }
+  return parsed;
+}
+
 function parseSection(value: unknown, index: number): Section {
   const label = `sections[${index}]`;
   if (!isRecord(value)) throw new ValidationError(`${label} must be an object`);
@@ -56,7 +69,7 @@ function parseSection(value: unknown, index: number): Section {
   const rawFields = isRecord(value.fields) ? value.fields : {};
   const fields: Record<string, string> = {};
   for (const field of spec.fields) {
-    fields[field.key] = str(rawFields[field.key] ?? '', `${label}.fields.${field.key}`);
+    fields[field.key] = fieldValue(rawFields[field.key], field, `${label}.fields.${field.key}`);
   }
 
   const items: SectionItem[] = [];

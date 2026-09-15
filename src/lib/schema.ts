@@ -3,10 +3,26 @@ import type { SectionType } from '@/types/content';
 export interface FieldSpec {
   key: string;
   label: string;
-  /** `text` renders a single-line input, `textarea` a multi-line one. */
-  input: 'text' | 'textarea';
+  /** `text` a single-line input, `textarea` multi-line, `select` a fixed list. */
+  input: 'text' | 'textarea' | 'select';
+  /** Required for `select`. The value stored is `value`. */
+  options?: { value: string; label: string }[];
   hint?: string;
 }
+
+/** Icons the editor can choose from. Keys must exist in src/components/Icon.tsx. */
+export const ICON_OPTIONS = [
+  { value: 'overlap', label: 'Overlapping circles' },
+  { value: 'tag', label: 'Tag' },
+  { value: 'sliders', label: 'Sliders' },
+  { value: 'ranked', label: 'Ranked bars' },
+  { value: 'globe', label: 'Globe' },
+  { value: 'exchange', label: 'Two-way arrows' },
+  { value: 'target', label: 'Target' },
+  { value: 'users', label: 'People' },
+  { value: 'spark', label: 'Spark' },
+  { value: 'shield', label: 'Shield' },
+] as const;
 
 export interface ItemSpec {
   /** Singular noun shown on the "Add …" button, e.g. "feature". */
@@ -78,6 +94,12 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
       noun: 'feature',
       max: 9,
       fields: [
+        {
+          key: 'icon',
+          label: 'Icon',
+          input: 'select',
+          options: [...ICON_OPTIONS],
+        },
         { key: 'title', label: 'Title', input: 'text' },
         { key: 'body', label: 'Description', input: 'textarea' },
       ],

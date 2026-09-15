@@ -86,31 +86,37 @@
       "items": [
         {
           "id": "f1",
+          "icon": "overlap",
           "title": "Audience compatibility",
           "body": "A single score for how well a brand's customers and an artist's listeners actually overlap."
         },
         {
           "id": "f2",
+          "icon": "tag",
           "title": "Brand & artist signals",
           "body": "See the tags driving a match — wellness culture, indie lifestyle, low-sugar beverage, taste-led audience."
         },
         {
           "id": "f3",
+          "icon": "sliders",
           "title": "Vibe alignment",
           "body": "Compare campaign tone against artist tone across energetic, elegant, bold, urban and global."
         },
         {
           "id": "f4",
+          "icon": "ranked",
           "title": "Ranked matches",
           "body": "A ten-deep shortlist with match scores, demographic splits and regional strength on every row."
         },
         {
           "id": "f5",
+          "icon": "globe",
           "title": "Regional reach",
           "body": "Know which markets a partnership actually lands in before you commit budget."
         },
         {
           "id": "f6",
+          "icon": "exchange",
           "title": "Built for both sides",
           "body": "Brands find artists. Artists, managers and labels find brands. Same engine, both directions."
         }

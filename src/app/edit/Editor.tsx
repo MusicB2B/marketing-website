@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useMemo, useState } from 'react';
-import { Footer, Header } from '@/components/Chrome';
+import { Footer } from '@/components/Chrome';
 import { SectionRenderer } from '@/components/sections';
 import { SECTION_SCHEMA } from '@/lib/schema';
 import type { FieldSpec, SectionSpec } from '@/lib/schema';
@@ -44,6 +44,18 @@ function Field({
           onChange={(event) => onChange(event.target.value)}
           className={`${shared} resize-y`}
         />
+      ) : spec.input === 'select' ? (
+        <select
+          value={value || spec.options?.[0]?.value || ''}
+          onChange={(event) => onChange(event.target.value)}
+          className={shared}
+        >
+          {spec.options?.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       ) : (
         <input
           value={value}
@@ -416,7 +428,6 @@ export function Editor({ initial }: { initial: SiteContent }) {
 
         <div className="bg-canvas overflow-y-auto">
           <div className="pointer-events-none">
-            <Header nav={content.nav} />
             <main>
               {content.sections
                 .filter((section) => section.visible)

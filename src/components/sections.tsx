@@ -1,4 +1,5 @@
-import { Button, Eyebrow } from '@/components/Brand';
+import { Button, Eyebrow, Logo } from '@/components/Brand';
+import { Icon } from '@/components/Icon';
 import { MatchCard } from '@/components/MatchCard';
 import type { Section } from '@/types/content';
 
@@ -27,7 +28,7 @@ function Shell({
   return (
     <section
       id={section.id}
-      className={`${THEME[section.style.theme]} px-6 py-20 sm:py-28 ${className}`}
+      className={`${THEME[section.style.theme]} px-6 py-14 sm:py-20 ${className}`}
     >
       <div
         className={`mx-auto w-full max-w-6xl ${section.style.align === 'center' ? 'text-center' : ''}`}
@@ -52,8 +53,13 @@ function Heading({ section, children }: { section: Section; children: React.Reac
 function Hero({ section }: { section: Section }) {
   const f = section.fields;
   return (
-    <section id={section.id} className="dot-field relative px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
+    <section id={section.id} className="dot-field relative px-6 pt-7 pb-12 sm:pb-16">
+      <div className="relative mx-auto mb-10 w-full max-w-6xl sm:mb-12">
+        <span className="text-brand inline-block">
+          <Logo id="logo-hero" width={150} height={42} />
+        </span>
+      </div>
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
         <div className={section.style.align === 'center' ? 'text-center' : ''}>
           <Eyebrow>{f.eyebrow}</Eyebrow>
           <h1
@@ -62,12 +68,12 @@ function Hero({ section }: { section: Section }) {
             {f.heading}
           </h1>
           {f.subheading && (
-            <p className="text-body mt-6 max-w-xl text-[1.15rem] leading-relaxed font-medium sm:text-[1.3rem]">
+            <p className="text-body mt-5 max-w-xl text-[1.15rem] leading-relaxed font-medium sm:text-[1.3rem]">
               {f.subheading}
             </p>
           )}
           <div
-            className={`mt-9 flex flex-wrap gap-3 ${section.style.align === 'center' ? 'justify-center' : ''}`}
+            className={`mt-7 flex flex-wrap gap-3 ${section.style.align === 'center' ? 'justify-center' : ''}`}
           >
             {f.primaryLabel && (
               <Button href={f.primaryHref || '#'} size="lg">
@@ -80,7 +86,7 @@ function Hero({ section }: { section: Section }) {
               </Button>
             )}
           </div>
-          {f.footnote && <p className="text-muted mt-8 text-[0.95rem]">{f.footnote}</p>}
+          {f.footnote && <p className="text-muted mt-7 text-[0.95rem]">{f.footnote}</p>}
         </div>
         <div className="lg:pl-4">
           <MatchCard />
@@ -117,7 +123,7 @@ function HowItWorks({ section }: { section: Section }) {
       {section.fields.subheading && (
         <p className="mt-5 max-w-2xl text-[1.12rem] leading-relaxed">{section.fields.subheading}</p>
       )}
-      <ol className="mt-14 grid gap-8 sm:grid-cols-3">
+      <ol className="mt-10 grid gap-8 sm:grid-cols-3">
         {section.items.map((item, index) => (
           <li key={item.id}>
             <span className="bg-brand-tint text-brand mb-5 flex h-11 w-11 items-center justify-center rounded-full text-[1.05rem] font-bold">
@@ -140,12 +146,17 @@ function Features({ section }: { section: Section }) {
       {section.fields.subheading && (
         <p className="mt-5 max-w-2xl text-[1.12rem] leading-relaxed">{section.fields.subheading}</p>
       )}
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {section.items.map((item) => (
           <article
             key={item.id}
             className="border-line rounded-card border bg-white p-7 transition-shadow duration-200 hover:shadow-[0_18px_44px_-24px_rgba(16,19,26,0.25)]"
           >
+            {item.icon && (
+              <span className="bg-brand-tint text-brand mb-5 flex h-11 w-11 items-center justify-center rounded-xl">
+                <Icon name={item.icon} className="h-[1.45rem] w-[1.45rem]" />
+              </span>
+            )}
             <h3 className="mb-2.5 text-[1.18rem] font-bold">{item.title}</h3>
             <p className="text-[1rem] leading-relaxed">{item.body}</p>
           </article>
@@ -188,7 +199,7 @@ function Cta({ section }: { section: Section }) {
           </Button>
         </div>
       )}
-      {f.footnote && <p className="text-muted mt-6 text-[0.95rem]">{f.footnote}</p>}
+      {f.footnote && <p className="mt-6 text-[0.95rem] text-white/45">{f.footnote}</p>}
     </Shell>
   );
 }

@@ -104,7 +104,7 @@ variables below, and point the domain at it.
 | `GITHUB_OWNER`          | `MusicB2B`                                                                 |
 | `GITHUB_REPO`           | `marketing-website`                                                        |
 | `GITHUB_BRANCH`         | `main`                                                                     |
-| `NEXT_PUBLIC_SITE_URL`  | e.g. `https://fanbased.com`                                                 |
+| `NEXT_PUBLIC_SITE_URL`  | e.g. `https://fanbased.com`                                                |
 
 Create the token at
 <https://github.com/settings/personal-access-tokens/new> — scope it to this
