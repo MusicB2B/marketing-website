@@ -92,7 +92,7 @@ function Signals({ label, signals }: { label: string; signals: string[] }) {
       <p className="text-muted mb-2.5 text-[0.62rem] font-black tracking-[0.14em] uppercase">
         {label}
       </p>
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex min-h-[6rem] flex-wrap content-start gap-1.5">
         {signals.map((signal) => (
           <span
             key={signal}
@@ -106,12 +106,14 @@ function Signals({ label, signals }: { label: string; signals: string[] }) {
   );
 }
 
-export function LiveMatchPanel() {
+export function LiveMatchPanel({ disclaimer }: { disclaimer: string }) {
   const [index, setIndex] = useState(0);
+  const [infoOpen, setInfoOpen] = useState(false);
   const [score, setScore] = useState(0);
   const [onScreen, setOnScreen] = useState(false);
   const [tabActive, setTabActive] = useState(true);
   const panelRef = useRef<HTMLElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
   const match = EXAMPLE_MATCHES[index]!;
@@ -141,13 +143,22 @@ export function LiveMatchPanel() {
   }, []);
 
   const visible = onScreen && tabActive;
-  const running = visible && !reducedMotion;
+  const running = visible && !reducedMotion && !infoOpen;
 
   useEffect(() => {
     if (!running) return;
     const id = setTimeout(next, ROTATE_MS);
     return () => clearTimeout(id);
   }, [running, next, index]);
+
+  useEffect(() => {
+    if (!infoOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setInfoOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [infoOpen]);
 
   // Count the score up, matching the bar fill.
   useEffect(() => {
@@ -178,34 +189,46 @@ export function LiveMatchPanel() {
       aria-label="Example partnership"
     >
       <div className="mb-5 flex items-start justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <div className="flex items-center gap-2">
           <p className="text-muted text-[0.66rem] font-black tracking-[0.16em] uppercase">
             Example Partnership
           </p>
-          <span className="border-brand text-brand bg-canvas rounded-full border px-2.5 py-1.5 text-[0.64rem] font-black tracking-[0.04em] uppercase">
-            {match.status}
-          </span>
-        </div>
-        <button
-          type="button"
-          onClick={next}
-          aria-label="Show another example partnership"
-          className="text-muted hover:text-brand shrink-0 transition-colors"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-[1.1rem] w-[1.1rem]"
-            aria-hidden="true"
+          <button
+            type="button"
+            onClick={() => setInfoOpen((open) => !open)}
+            aria-expanded={infoOpen}
+            aria-label="About these examples"
+            className={`flex h-[1.05rem] w-[1.05rem] shrink-0 items-center justify-center rounded-full border text-[0.62rem] font-black transition-colors ${
+              infoOpen
+                ? 'border-brand bg-brand text-white'
+                : 'border-muted text-muted hover:border-brand hover:text-brand'
+            }`}
           >
-            <path d="M20 11.5A8 8 0 1 0 18.3 17M20 5.5v5h-5" />
-          </svg>
-        </button>
+            i
+          </button>
+        </div>
+
+        <span className="border-brand text-brand bg-canvas shrink-0 rounded-full border px-2.5 py-1.5 text-[0.64rem] font-black tracking-[0.04em] uppercase">
+          {match.status}
+        </span>
       </div>
+
+      {infoOpen && (
+        <div
+          ref={infoRef}
+          role="note"
+          className="border-line bg-surface-alt mb-5 rounded-xl border p-4"
+        >
+          <p className="text-body text-[0.8rem] leading-relaxed">{disclaimer}</p>
+          <button
+            type="button"
+            onClick={() => setInfoOpen(false)}
+            className="text-brand mt-2.5 text-[0.78rem] font-bold"
+          >
+            Close
+          </button>
+        </div>
+      )}
 
       <div className="mb-4 grid grid-cols-1 gap-3.5 min-[480px]:grid-cols-2">
         <Entity key={`${match.id}-brand`} entity={match.brand} paused={!visible} />

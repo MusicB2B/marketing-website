@@ -66,6 +66,27 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
       { key: 'secondaryLabel', label: 'Secondary button', input: 'text' },
       { key: 'secondaryHref', label: 'Secondary button link', input: 'text' },
       { key: 'footnote', label: 'Footnote', input: 'text' },
+      {
+        key: 'visual',
+        label: 'Panel beside the text',
+        input: 'select',
+        options: [
+          { value: 'livePanel', label: 'Live example partnership' },
+          { value: 'image', label: 'A fixed image' },
+        ],
+      },
+      {
+        key: 'visualImage',
+        label: 'Image file',
+        input: 'text',
+        hint: 'Only used when the panel above is set to "A fixed image". Leave blank to show a placeholder.',
+      },
+      {
+        key: 'disclaimer',
+        label: 'Example partnership disclaimer',
+        input: 'textarea',
+        hint: 'Shown when someone clicks the info button on the live panel. Have legal read this before changing it.',
+      },
     ],
   },
   logos: {
@@ -101,7 +122,7 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
     ],
     item: {
       noun: 'feature',
-      max: 9,
+      max: 6,
       fields: [
         {
           key: 'icon',

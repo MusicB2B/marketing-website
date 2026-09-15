@@ -4,7 +4,7 @@ import { RequestAccessForm } from '@/components/RequestAccessForm';
 import { CampaignDemo } from '@/components/CampaignDemo';
 import { VibeChart } from '@/components/VibeChart';
 import { PlatformIcon } from '@/components/PlatformIcon';
-import { LiveMatchPanel } from '@/components/LiveMatchPanel';
+import { HeroVisual } from '@/components/HeroVisual';
 import type { Section } from '@/types/content';
 
 /** Maps the constrained style tokens onto real classes. */
@@ -58,7 +58,7 @@ function Hero({ section }: { section: Section }) {
   const f = section.fields;
   return (
     <section id={section.id} className="dot-field relative px-6 pt-10 pb-12 sm:pt-14 sm:pb-16">
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1fr_1.18fr] lg:gap-12">
         <div className={section.style.align === 'center' ? 'text-center' : ''}>
           <span
             className={`text-brand mb-8 inline-block sm:mb-10 ${
@@ -95,7 +95,11 @@ function Hero({ section }: { section: Section }) {
           {f.footnote && <p className="text-muted mt-7 text-[0.95rem]">{f.footnote}</p>}
         </div>
         <div className="lg:pl-4">
-          <LiveMatchPanel />
+          <HeroVisual
+            variant={f.visual || 'livePanel'}
+            image={f.visualImage || ''}
+            disclaimer={f.disclaimer || ''}
+          />
         </div>
       </div>
     </section>

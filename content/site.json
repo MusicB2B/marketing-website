@@ -33,7 +33,10 @@
         "primaryHref": "#request-access",
         "secondaryLabel": "",
         "secondaryHref": "",
-        "footnote": "We're onboarding brands and artists now."
+        "footnote": "We're onboarding brands and artists now.",
+        "visual": "livePanel",
+        "visualImage": "",
+        "disclaimer": "Illustrative examples only. The partnerships shown are hypothetical demonstrations of how the Fanbased matching engine scores audience alignment. They are not live, proposed, or completed partnerships, and Fanbased has no commercial relationship with, or endorsement from, any brand or artist shown. All names, trademarks and footage remain the property of their respective owners. Scores and signals are generated from sample data for demonstration purposes."
       },
       "items": []
     },
