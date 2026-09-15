@@ -6,7 +6,8 @@
  * editor is just moving an element.
  */
 
-export type SectionType = 'hero' | 'logos' | 'howItWorks' | 'features' | 'stats' | 'cta';
+export type SectionType =
+  'hero' | 'logos' | 'howItWorks' | 'features' | 'stats' | 'cta' | 'requestAccess';
 
 /** Constrained presentation knobs. Deliberately a small set of tokens rather than
  *  free-form CSS, so the page cannot be made to look broken. */

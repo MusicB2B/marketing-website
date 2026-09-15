@@ -1,5 +1,6 @@
 import { Button, Eyebrow, Logo } from '@/components/Brand';
 import { Icon } from '@/components/Icon';
+import { RequestAccessForm } from '@/components/RequestAccessForm';
 import { MatchCard } from '@/components/MatchCard';
 import type { Section } from '@/types/content';
 
@@ -53,14 +54,16 @@ function Heading({ section, children }: { section: Section; children: React.Reac
 function Hero({ section }: { section: Section }) {
   const f = section.fields;
   return (
-    <section id={section.id} className="dot-field relative px-6 pt-7 pb-12 sm:pb-16">
-      <div className="relative mx-auto mb-10 w-full max-w-6xl sm:mb-12">
-        <span className="text-brand inline-block">
-          <Logo id="logo-hero" width={150} height={42} />
-        </span>
-      </div>
+    <section id={section.id} className="dot-field relative px-6 pt-10 pb-12 sm:pt-14 sm:pb-16">
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
         <div className={section.style.align === 'center' ? 'text-center' : ''}>
+          <span
+            className={`text-brand mb-8 inline-block sm:mb-10 ${
+              section.style.align === 'center' ? '' : '-ml-1'
+            }`}
+          >
+            <Logo id="logo-hero" width={300} height={82} />
+          </span>
           <Eyebrow>{f.eyebrow}</Eyebrow>
           <h1
             className={`${HEADING_SCALE[section.style.scale]} leading-[0.98] font-bold text-balance`}
@@ -204,6 +207,30 @@ function Cta({ section }: { section: Section }) {
   );
 }
 
+function RequestAccess({ section }: { section: Section }) {
+  const f = section.fields;
+  return (
+    <Shell section={section}>
+      <div className="mx-auto max-w-2xl">
+        <div className="text-center">
+          <Eyebrow>{f.eyebrow}</Eyebrow>
+          <Heading section={section}>{f.heading}</Heading>
+          {f.subheading && (
+            <p className="mx-auto mt-4 max-w-xl text-[1.08rem] leading-relaxed">{f.subheading}</p>
+          )}
+        </div>
+        <div className="mt-9">
+          <RequestAccessForm
+            submitLabel={f.submitLabel || 'Send request'}
+            successMessage={f.successMessage || 'Thanks — we will be in touch shortly.'}
+          />
+        </div>
+        {f.footnote && <p className="text-muted mt-5 text-center text-[0.92rem]">{f.footnote}</p>}
+      </div>
+    </Shell>
+  );
+}
+
 const RENDERERS = {
   hero: Hero,
   logos: Logos,
@@ -211,6 +238,7 @@ const RENDERERS = {
   features: Features,
   stats: Stats,
   cta: Cta,
+  requestAccess: RequestAccess,
 } as const;
 
 export function SectionRenderer({ section }: { section: Section }) {

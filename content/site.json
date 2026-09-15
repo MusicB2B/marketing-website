@@ -153,19 +153,20 @@
       ]
     },
     {
-      "id": "cta",
-      "type": "cta",
+      "id": "request-access",
+      "type": "requestAccess",
       "visible": true,
       "style": {
         "align": "center",
         "scale": "lg",
-        "theme": "dark"
+        "theme": "light"
       },
       "fields": {
+        "eyebrow": "Request access",
         "heading": "Find your next partnership.",
-        "subheading": "Request access and we'll get you into the platform.",
-        "primaryLabel": "Request Access",
-        "primaryHref": "#request-access",
+        "subheading": "Tell us who you are and what you're working on. We read every one.",
+        "submitLabel": "Request Access",
+        "successMessage": "Thanks — we've got it. We'll be in touch shortly.",
         "footnote": "No credit card. No commitment."
       },
       "items": []

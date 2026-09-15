@@ -118,6 +118,23 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
       ],
     },
   },
+  requestAccess: {
+    label: 'Request access form',
+    description: 'The enquiry form. Submissions are emailed to the team inbox.',
+    fields: [
+      { key: 'eyebrow', label: 'Eyebrow', input: 'text' },
+      { key: 'heading', label: 'Heading', input: 'text' },
+      { key: 'subheading', label: 'Intro', input: 'textarea' },
+      { key: 'submitLabel', label: 'Submit button', input: 'text' },
+      {
+        key: 'successMessage',
+        label: 'Thank-you message',
+        input: 'text',
+        hint: 'Shown after someone sends the form.',
+      },
+      { key: 'footnote', label: 'Footnote', input: 'text' },
+    ],
+  },
   cta: {
     label: 'Closing call to action',
     description: 'The final prompt before the footer.',
