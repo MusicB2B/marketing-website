@@ -445,8 +445,13 @@ export function Editor({ initial }: { initial: SiteContent }) {
   }
 
   async function signOut() {
+    // Leaving now discards anything unsaved, and the audience for this editor
+    // will not assume that.
+    if (dirty && !window.confirm('You have unsaved changes. Leave without saving?')) return;
     await fetch('/api/auth', { method: 'DELETE' });
-    window.location.reload();
+    // Land on the site itself rather than back on the editor's login screen,
+    // so whoever just saved can see what they changed.
+    window.location.href = '/';
   }
 
   const statusColour = {

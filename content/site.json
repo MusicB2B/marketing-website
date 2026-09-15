@@ -34,16 +34,16 @@
         "secondaryLabel": "",
         "secondaryHref": "",
         "footnote": "We're onboarding brands and artists now.",
-        "visual": "livePanel",
-        "visualImage": "/matches/header-static.png",
-        "disclaimer": "Illustrative examples only. The partnerships shown are hypothetical demonstrations of how the Fanbased matching engine scores audience alignment. They are not live, proposed, or completed partnerships, and Fanbased has no commercial relationship with, or endorsement from, any brand or artist shown. All names, trademarks and footage remain the property of their respective owners. Scores and signals are generated from sample data for demonstration purposes.",
+        "visual": "image",
+        "visualImage": "/images/header-static.png",
+        "visualImageAlt": "A country artist playing guitar beside a whiskey brand still, joined by the Fanbased mark, showing a 74% audience fit between them.",
         "panelEyebrow": "Example Partnership",
         "panelScoreLabel": "Audience Compatibility",
         "panelBrandLabel": "Brand Signals",
         "panelArtistLabel": "Artist Signals",
         "panelStrengthLabel": "Partnership Strength",
         "panelRegionsLabel": "Primary Regions",
-        "visualImageAlt": "A country artist playing guitar beside a whiskey brand still, joined by the Fanbased mark, showing a 74% audience fit between them."
+        "disclaimer": "Illustrative examples only. The partnerships shown are hypothetical demonstrations of how the Fanbased matching engine scores audience alignment. They are not live, proposed, or completed partnerships, and Fanbased has no commercial relationship with, or endorsement from, any brand or artist shown. All names, trademarks and footage remain the property of their respective owners. Scores and signals are generated from sample data for demonstration purposes."
       },
       "items": [
         {
@@ -114,15 +114,15 @@
       "items": [
         {
           "id": "w1",
-          "icon": "target",
           "label": "Brands",
-          "body": "Find artists whose audiences are already your customers."
+          "body": "Find artists whose audiences are already your customers.",
+          "icon": "target"
         },
         {
           "id": "w2",
-          "icon": "users",
           "label": "Artists",
-          "body": "Get discovered by brands that genuinely fit your fanbase."
+          "body": "Get discovered by brands that genuinely fit your fanbase.",
+          "icon": "users"
         }
       ]
     },
@@ -371,13 +371,13 @@
         "eyebrow": "Request access",
         "heading": "Find your next partnership.",
         "subheading": "Tell us who you are and what you're working on. We read every one.",
-        "submitLabel": "Request Access",
-        "successMessage": "Thanks, we've got it. We'll be in touch shortly.",
-        "footnote": "No credit card. No commitment.",
         "nameLabel": "Name",
         "emailLabel": "Email",
         "subjectLabel": "Subject",
-        "messageLabel": "Message"
+        "messageLabel": "Message",
+        "submitLabel": "Request Access",
+        "successMessage": "Thanks, we've got it. We'll be in touch shortly.",
+        "footnote": "No credit card. No commitment."
       },
       "items": []
     }
