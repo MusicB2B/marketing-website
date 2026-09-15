@@ -4,7 +4,7 @@ import { RequestAccessForm } from '@/components/RequestAccessForm';
 import { CampaignDemo } from '@/components/CampaignDemo';
 import { VibeChart } from '@/components/VibeChart';
 import { PlatformIcon } from '@/components/PlatformIcon';
-import { MatchCard } from '@/components/MatchCard';
+import { LiveMatchPanel } from '@/components/LiveMatchPanel';
 import type { Section } from '@/types/content';
 
 /** Maps the constrained style tokens onto real classes. */
@@ -95,7 +95,7 @@ function Hero({ section }: { section: Section }) {
           {f.footnote && <p className="text-muted mt-7 text-[0.95rem]">{f.footnote}</p>}
         </div>
         <div className="lg:pl-4">
-          <MatchCard />
+          <LiveMatchPanel />
         </div>
       </div>
     </section>
