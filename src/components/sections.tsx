@@ -53,7 +53,7 @@ function Hero({ section }: { section: Section }) {
   const f = section.fields;
   return (
     <section id={section.id} className="dot-field relative px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
         <div className={section.style.align === 'center' ? 'text-center' : ''}>
           <Eyebrow>{f.eyebrow}</Eyebrow>
           <h1

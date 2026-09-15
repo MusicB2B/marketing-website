@@ -36,7 +36,7 @@ export function Login() {
     <main className="flex min-h-dvh items-center justify-center px-6">
       <form onSubmit={submit} className="w-full max-w-sm">
         <span className="text-brand mb-8 flex justify-center">
-          <Logo />
+          <Logo id="logo-login" width={150} height={42} />
         </span>
         <h1 className="mb-2 text-center text-[1.6rem] font-bold">Edit the site</h1>
         <p className="mb-7 text-center text-[0.98rem]">

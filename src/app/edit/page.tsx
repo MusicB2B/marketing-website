@@ -6,7 +6,7 @@ import { Login } from './Login';
 
 /** Keep the editor out of search results even if the URL leaks. */
 export const metadata: Metadata = {
-  title: 'Edit — fanbasd',
+  title: 'Edit — fanbased',
   robots: { index: false, follow: false, nocache: true },
 };
 

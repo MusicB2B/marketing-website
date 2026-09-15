@@ -1,19 +1,19 @@
 {
   "version": 1,
   "meta": {
-    "title": "fanbasd — Where brands & artists meet",
+    "title": "fanbased — Where brands & artists meet",
     "description": "We match brands with artists whose audiences actually overlap.",
     "ogImage": "/og.png"
   },
   "nav": {
-    "signInLabel": "Sign In",
-    "signInHref": "/signin",
+    "signInLabel": "",
+    "signInHref": "",
     "ctaLabel": "Request Access",
     "ctaHref": "#request-access"
   },
   "footer": {
     "tagline": "Built for artists, managers, labels, agencies, and brands.",
-    "copyright": "© 2026 fanbasd. All rights reserved."
+    "copyright": "© 2026 fanbased. All rights reserved."
   },
   "sections": [
     {
@@ -31,46 +31,11 @@
         "subheading": "We match brands with artists whose audiences actually overlap.",
         "primaryLabel": "Request Access",
         "primaryHref": "#request-access",
-        "secondaryLabel": "Sign In",
-        "secondaryHref": "/signin",
+        "secondaryLabel": "",
+        "secondaryHref": "",
         "footnote": "Built for artists, managers, labels, agencies, and brands."
       },
       "items": []
-    },
-    {
-      "id": "logos",
-      "type": "logos",
-      "visible": true,
-      "style": {
-        "align": "center",
-        "scale": "sm",
-        "theme": "light"
-      },
-      "fields": {
-        "heading": "Trusted by teams across music and brand marketing"
-      },
-      "items": [
-        {
-          "id": "l1",
-          "name": "Spindrift"
-        },
-        {
-          "id": "l2",
-          "name": "Ray-Ban"
-        },
-        {
-          "id": "l3",
-          "name": "Men I Trust"
-        },
-        {
-          "id": "l4",
-          "name": "Kojey Radical"
-        },
-        {
-          "id": "l5",
-          "name": "Knucks"
-        }
-      ]
     },
     {
       "id": "how",

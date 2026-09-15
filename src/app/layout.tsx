@@ -12,7 +12,7 @@ const roboto = Roboto({
 
 export function generateMetadata(): Metadata {
   const { meta } = loadContent();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fanbasd.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://fanbased.com';
   return {
     metadataBase: new URL(siteUrl),
     title: meta.title,
@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
       title: meta.title,
       description: meta.description,
       url: siteUrl,
-      siteName: 'fanbasd',
+      siteName: 'fanbased',
       images: meta.ogImage ? [meta.ogImage] : undefined,
       type: 'website',
     },

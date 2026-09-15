@@ -5,8 +5,8 @@ export function Header({ nav }: { nav: SiteContent['nav'] }) {
   return (
     <header className="border-line/70 sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="text-brand" aria-label="fanbasd home">
-          <Logo />
+        <a href="#" className="text-brand" aria-label="fanbased home">
+          <Logo id="logo-header" width={150} height={42} />
         </a>
         <nav className="flex items-center gap-2 sm:gap-4">
           {nav.signInLabel && (
@@ -29,7 +29,7 @@ export function Footer({ footer }: { footer: SiteContent['footer'] }) {
     <footer className="bg-night px-6 py-14">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 text-center">
         <span className="text-brand">
-          <Logo />
+          <Logo id="logo-footer" width={150} height={42} />
         </span>
         {footer.tagline && <p className="text-[1rem] text-white/60">{footer.tagline}</p>}
         {footer.copyright && (

@@ -1,6 +1,6 @@
-# fanbasd — marketing website
+# fanbased — marketing website
 
-The public marketing page for [fanbasd](https://fanbasd.com), plus a small
+The public marketing page for [fanbased](https://fanbased.com), plus a small
 password-protected editor at `/edit` so product, marketing and sales can change
 the copy without a developer.
 
@@ -104,7 +104,7 @@ variables below, and point the domain at it.
 | `GITHUB_OWNER`          | `MusicB2B`                                                                 |
 | `GITHUB_REPO`           | `marketing-website`                                                        |
 | `GITHUB_BRANCH`         | `main`                                                                     |
-| `NEXT_PUBLIC_SITE_URL`  | e.g. `https://fanbasd.com`                                                 |
+| `NEXT_PUBLIC_SITE_URL`  | e.g. `https://fanbased.com`                                                 |
 
 Create the token at
 <https://github.com/settings/personal-access-tokens/new> — scope it to this

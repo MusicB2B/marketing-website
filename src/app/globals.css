@@ -65,8 +65,23 @@
 }
 
 @layer components {
-  /* The faint dotted field behind the hero in the product screenshots. */
+  /* The faint dotted field behind the hero in the product screenshots.
+   *
+   * The dots live on a ::before layer rather than on the element itself:
+   * mask-image applies to an element's whole rendering including its
+   * children, so masking the section directly faded out the headline,
+   * buttons and match card along with the dots. */
   .dot-field {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .dot-field::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
     background-size: 22px 22px;
     -webkit-mask-image: linear-gradient(to bottom, #000, transparent 75%);
