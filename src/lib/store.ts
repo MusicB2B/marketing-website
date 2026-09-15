@@ -85,7 +85,7 @@ export async function saveContent(content: SiteContent, author: string): Promise
   const result = await githubRequest(base, token, {
     method: 'PUT',
     body: JSON.stringify({
-      message: `content: update site copy via /edit (${author})`,
+      message: `content: update site copy (${author})`,
       content: Buffer.from(serialised, 'utf8').toString('base64'),
       branch,
       ...(sha ? { sha } : {}),

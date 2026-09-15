@@ -3,7 +3,7 @@ import type { FieldSpec } from '@/lib/schema';
 import type { Section, SectionItem, SectionStyle, SiteContent } from '@/types/content';
 
 /**
- * Server-side validation for anything arriving from /edit.
+ * Server-side validation for anything arriving from the authoring UI.
  *
  * The editor is password-protected, but a valid session must still not be able
  * to write arbitrary JSON into the repo — we rebuild the document from the

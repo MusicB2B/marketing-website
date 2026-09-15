@@ -15,6 +15,9 @@ next-env.d.ts
 # production
 dist/
 
+# internal notes, shared with the team out of band
+EDITOR.md
+
 # environment — never commit real secrets
 .env
 .env.local

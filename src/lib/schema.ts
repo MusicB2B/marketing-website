@@ -50,7 +50,7 @@ export interface SectionSpec {
 /**
  * The single source of truth for what the editor can change.
  *
- * Adding a field here makes it appear in /edit automatically — the editor
+ * Adding a field here makes it appear in the authoring UI automatically — it
  * renders from this, it has no per-section code.
  */
 export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
