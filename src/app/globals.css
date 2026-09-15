@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+/**
+ * Tokens mirror frontend/design/theme.ts in the fanbasd platform repo
+ * (activeTheme = fanbasdClassicTheme). Keep them in sync — if the platform
+ * theme changes, change these to match.
+ */
+@theme {
+  --color-brand: #16a34a; /* colors.brand.primary */
+  --color-brand-dark: #12813b; /* darkened for hover */
+  --color-brand-accent: #22c55e; /* colors.brand.accent */
+  --color-brand-tint: #dcfce7; /* colors.brand.secondary */
+  --color-artist: #d94674; /* colors.artist.primary */
+
+  --color-ink: #18181b; /* colors.text.primary */
+  --color-body: #52525b; /* colors.text.secondary */
+  --color-muted: #a1a1aa; /* colors.text.muted */
+
+  --color-canvas: #f6f5f3; /* colors.surface.page */
+  --color-surface: #ffffff; /* colors.surface.panel */
+  --color-surface-alt: #fafaf9; /* colors.surface.panelAlt */
+  --color-night: #18181b;
+
+  --color-line: rgba(0, 0, 0, 0.08); /* colors.border.subtle */
+  --color-line-strong: rgba(0, 0, 0, 0.18); /* colors.border.strong */
+
+  --font-sans: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --radius-card: 18px; /* radii.panel */
+
+  --shadow-subtle: 0 12px 30px rgba(0, 0, 0, 0.05);
+  --shadow-panel: 0 28px 80px rgba(0, 0, 0, 0.115);
+  --shadow-elevated: 0 24px 70px rgba(0, 0, 0, 0.075);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--color-ink);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* The faint dotted field behind the hero in the product screenshots. */
+  .dot-field {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 75%);
+    mask-image: linear-gradient(to bottom, #000, transparent 75%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

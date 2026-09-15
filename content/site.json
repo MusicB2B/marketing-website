@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "meta": {
+    "title": "fanbasd — Where brands & artists meet",
+    "description": "We match brands with artists whose audiences actually overlap.",
+    "ogImage": "/og.png"
+  },
+  "nav": {
+    "signInLabel": "Sign In",
+    "signInHref": "/signin",
+    "ctaLabel": "Request Access",
+    "ctaHref": "#request-access"
+  },
+  "footer": {
+    "tagline": "Built for artists, managers, labels, agencies, and brands.",
+    "copyright": "© 2026 fanbasd. All rights reserved."
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "visible": true,
+      "style": {
+        "align": "left",
+        "scale": "lg",
+        "theme": "light"
+      },
+      "fields": {
+        "eyebrow": "Artists & brands. Louder together.",
+        "heading": "Where brands & artists meet.",
+        "subheading": "We match brands with artists whose audiences actually overlap.",
+        "primaryLabel": "Request Access",
+        "primaryHref": "#request-access",
+        "secondaryLabel": "Sign In",
+        "secondaryHref": "/signin",
+        "footnote": "Built for artists, managers, labels, agencies, and brands."
+      },
+      "items": []
+    },
+    {
+      "id": "logos",
+      "type": "logos",
+      "visible": true,
+      "style": {
+        "align": "center",
+        "scale": "sm",
+        "theme": "light"
+      },
+      "fields": {
+        "heading": "Trusted by teams across music and brand marketing"
+      },
+      "items": [
+        {
+          "id": "l1",
+          "name": "Spindrift"
+        },
+        {
+          "id": "l2",
+          "name": "Ray-Ban"
+        },
+        {
+          "id": "l3",
+          "name": "Men I Trust"
+        },
+        {
+          "id": "l4",
+          "name": "Kojey Radical"
+        },
+        {
+          "id": "l5",
+          "name": "Knucks"
+        }
+      ]
+    },
+    {
+      "id": "how",
+      "type": "howItWorks",
+      "visible": true,
+      "style": {
+        "align": "left",
+        "scale": "md",
+        "theme": "tint"
+      },
+      "fields": {
+        "eyebrow": "How it works",
+        "heading": "From brief to shortlist in minutes.",
+        "subheading": "Tell us the campaign. The matching engine does the rest."
+      },
+      "items": [
+        {
+          "id": "s1",
+          "title": "Set the brief",
+          "body": "Market position, target age, gender split, regions and brand tone. Takes about two minutes."
+        },
+        {
+          "id": "s2",
+          "title": "We score the overlap",
+          "body": "The engine compares your campaign against real artist audience data — not follower counts."
+        },
+        {
+          "id": "s3",
+          "title": "Get a ranked shortlist",
+          "body": "Every match comes with a score and the signals behind it, so you can defend the pick."
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "type": "features",
+      "visible": true,
+      "style": {
+        "align": "left",
+        "scale": "md",
+        "theme": "light"
+      },
+      "fields": {
+        "eyebrow": "The matching engine",
+        "heading": "Partnerships backed by data, not hunches.",
+        "subheading": "Every recommendation shows its working."
+      },
+      "items": [
+        {
+          "id": "f1",
+          "title": "Audience compatibility",
+          "body": "A single score for how well a brand's customers and an artist's listeners actually overlap."
+        },
+        {
+          "id": "f2",
+          "title": "Brand & artist signals",
+          "body": "See the tags driving a match — wellness culture, indie lifestyle, low-sugar beverage, taste-led audience."
+        },
+        {
+          "id": "f3",
+          "title": "Vibe alignment",
+          "body": "Compare campaign tone against artist tone across energetic, elegant, bold, urban and global."
+        },
+        {
+          "id": "f4",
+          "title": "Ranked matches",
+          "body": "A ten-deep shortlist with match scores, demographic splits and regional strength on every row."
+        },
+        {
+          "id": "f5",
+          "title": "Regional reach",
+          "body": "Know which markets a partnership actually lands in before you commit budget."
+        },
+        {
+          "id": "f6",
+          "title": "Built for both sides",
+          "body": "Brands find artists. Artists, managers and labels find brands. Same engine, both directions."
+        }
+      ]
+    },
+    {
+      "id": "stats",
+      "type": "stats",
+      "visible": false,
+      "style": {
+        "align": "center",
+        "scale": "md",
+        "theme": "dark"
+      },
+      "fields": {
+        "heading": ""
+      },
+      "items": [
+        {
+          "id": "st1",
+          "value": "78%",
+          "label": "Average audience compatibility on accepted matches"
+        },
+        {
+          "id": "st2",
+          "value": "10",
+          "label": "Ranked artists per brief"
+        },
+        {
+          "id": "st3",
+          "value": "3",
+          "label": "Markets scored by default"
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "type": "cta",
+      "visible": true,
+      "style": {
+        "align": "center",
+        "scale": "lg",
+        "theme": "dark"
+      },
+      "fields": {
+        "heading": "Find your next partnership.",
+        "subheading": "Request access and we'll get you into the platform.",
+        "primaryLabel": "Request Access",
+        "primaryHref": "#request-access",
+        "footnote": "No credit card. No commitment."
+      },
+      "items": []
+    }
+  ]
+}
