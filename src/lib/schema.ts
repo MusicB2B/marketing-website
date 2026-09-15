@@ -81,6 +81,12 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
         input: 'text',
         hint: 'Only used when the panel above is set to "A fixed image". Leave blank to show a placeholder.',
       },
+      {
+        key: 'visualImageAlt',
+        label: 'Image description',
+        input: 'text',
+        hint: 'Describes the image for screen readers and search engines. Say what it shows.',
+      },
       { key: 'panelEyebrow', label: 'Panel: heading', input: 'text' },
       { key: 'panelScoreLabel', label: 'Panel: score label', input: 'text' },
       { key: 'panelBrandLabel', label: 'Panel: brand signals label', input: 'text' },

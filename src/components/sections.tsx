@@ -98,6 +98,7 @@ function Hero({ section }: { section: Section }) {
           <HeroVisual
             variant={f.visual || 'livePanel'}
             image={f.visualImage || ''}
+            imageAlt={f.visualImageAlt || ''}
             disclaimer={f.disclaimer || ''}
             items={section.items}
             labels={{
