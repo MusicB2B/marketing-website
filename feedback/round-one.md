@@ -137,3 +137,72 @@ appears in both places. That is the same breadth objection that ruled out
 Aziya, applied to the page as a whole rather than the rotation. Mixing the
 ranked list would spread it; leaving it is defensible since that graphic is
 answering one specific brief.
+
+## Reasoning behind each change
+
+Kept here so nobody re-opens a settled question in three weeks.
+
+### 2 — Who it's for, moved up and shrunk
+
+Two bordered cards with large type were doing the work of a caption. The
+content is one line each; it did not need 378px. It is now a band of two
+icon-and-line pairs at 126px, which lands inside the first screen at 1440x900.
+That was the actual note: communicate who it is for _at the start_, and the
+old version pushed it below the fold on most laptops.
+
+### 3 — The brief graphic joined to the steps
+
+The three steps and the graphic were separate sections with a border between
+them, so the eye read them as two unrelated blocks. The border is gone and the
+steps are tighter: number and text now sit side by side rather than stacked,
+which removes a whole line of vertical space per step. The graphic reads as the
+worked example of the three steps above it, which is what it always was.
+
+### 4 — Matching-engine cards condensed rather than deleted
+
+Jules was unsure the section earns its place. Condensing first makes that
+judgement easier than deleting and arguing from memory: the cards went from
+250px to 109px by moving the icon inline with the title and tightening the
+body. If it still says too much at that size, hiding the section is one click,
+and nothing is lost.
+
+It landed at 44% of the original depth rather than the requested third. Getting
+to a strict third meant cutting every description to a single line, which would
+have made six cards that say almost nothing — worse than six that are simply
+shorter.
+
+### 5 — Data sources de-named
+
+Naming Spotify, Instagram, TikTok, YouTube and Chartmetric made the page read
+as an analytics product, and implied integrations we should not imply on a
+marketing page. The section now states what the data _is_ rather than where it
+comes from, in Jules's own wording, as a row of pills. 430px to 233px.
+
+### 6 — The form
+
+A message field asks for effort at the exact moment someone is deciding whether
+to bother, and anything it would have captured can be asked in the reply. Name
+and email, one horizontal row, 45px tall. The whole section went from 980px to
+353px, and the heading dropped a size so it stops competing with the hero.
+
+The API still accepts a subject and message if they are sent, so a longer form
+can come back later without touching the server.
+
+### The example partnership disclaimer
+
+Changed from a block inside the panel to a popover floating above it. Opening
+it used to grow the card and push the entire page down, which is a poor thing
+to do to someone reading a legal notice. Panel height and the position of the
+section below are now identical whether it is open or closed.
+
+The disclaimer _wording_ is unchanged and should stay that way; it is a legal
+statement, not copy.
+
+## Editor check after these changes
+
+All nine panels render, every stored field is still declared in the schema, and
+a save round-trips. The only empty fields are deliberate: the hero's secondary
+button, removed when the duplicate Sign In went, and the data sources eyebrow.
+
+Removed `PLATFORM_OPTIONS` from the schema, left behind when the platform logos
+went; it pointed at a component that no longer exists.

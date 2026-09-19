@@ -24,15 +24,6 @@ export const ICON_OPTIONS = [
   { value: 'shield', label: 'Shield' },
 ] as const;
 
-/** Platform marks for the data sources row. Keys must exist in PlatformIcon.tsx. */
-export const PLATFORM_OPTIONS = [
-  { value: 'spotify', label: 'Spotify' },
-  { value: 'instagram', label: 'Instagram' },
-  { value: 'tiktok', label: 'TikTok' },
-  { value: 'youtube', label: 'YouTube' },
-  { value: 'analytics', label: 'Analytics (generic)' },
-] as const;
-
 export interface ItemSpec {
   /** Singular noun shown on the "Add …" button, e.g. "feature". */
   noun: string;
