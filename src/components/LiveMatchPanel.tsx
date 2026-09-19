@@ -175,8 +175,19 @@ export function LiveMatchPanel({
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setInfoOpen(false);
     };
+    const onPointer = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (infoRef.current?.contains(target)) return;
+      // The button toggles itself; let its own handler deal with that click.
+      if ((target as HTMLElement).closest?.('[aria-label="About these examples"]')) return;
+      setInfoOpen(false);
+    };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onPointer);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onPointer);
+    };
   }, [infoOpen]);
 
   // Count the score up, matching the bar fill.
@@ -207,7 +218,7 @@ export function LiveMatchPanel({
       className="border-line rounded-card flex min-h-[33.5rem] flex-col border bg-white p-5 shadow-[0_28px_80px_-40px_rgba(0,0,0,0.3)] sm:p-6"
       aria-label="Example partnership"
     >
-      <div className="mb-5 flex items-start justify-between gap-4">
+      <div className="relative mb-5 flex items-start justify-between gap-4">
         <div className="flex items-center gap-2">
           <p className="text-muted text-[0.66rem] font-black tracking-[0.16em] uppercase">
             {labels.eyebrow}
@@ -230,24 +241,26 @@ export function LiveMatchPanel({
         <span className="border-brand text-brand bg-canvas shrink-0 rounded-full border px-2.5 py-1.5 text-[0.64rem] font-black tracking-[0.04em] uppercase">
           {match.status}
         </span>
-      </div>
 
-      {infoOpen && (
-        <div
-          ref={infoRef}
-          role="note"
-          className="border-line bg-surface-alt mb-5 rounded-xl border p-4"
-        >
-          <p className="text-body text-[0.8rem] leading-relaxed">{disclaimer}</p>
-          <button
-            type="button"
-            onClick={() => setInfoOpen(false)}
-            className="text-brand mt-2.5 text-[0.78rem] font-bold"
+        {/* Floats above the panel rather than pushing it open, so opening this
+            never moves the rest of the page. */}
+        {infoOpen && (
+          <div
+            ref={infoRef}
+            role="note"
+            className="border-line absolute top-full left-0 z-30 mt-2 w-[min(22rem,calc(100%-1rem))] rounded-xl border bg-white p-4 shadow-[0_18px_50px_-12px_rgba(0,0,0,0.35)]"
           >
-            Close
-          </button>
-        </div>
-      )}
+            <p className="text-body text-[0.8rem] leading-relaxed">{disclaimer}</p>
+            <button
+              type="button"
+              onClick={() => setInfoOpen(false)}
+              className="text-brand mt-2.5 text-[0.78rem] font-bold"
+            >
+              Close
+            </button>
+          </div>
+        )}
+      </div>
 
       <div className="mb-4 grid grid-cols-1 gap-3.5 min-[480px]:grid-cols-2">
         <Entity key={`${match.id}-brand`} entity={match.brand} paused={!visible} />
