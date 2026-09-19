@@ -3,7 +3,6 @@ import { Icon } from '@/components/Icon';
 import { RequestAccessForm } from '@/components/RequestAccessForm';
 import { CampaignDemo } from '@/components/CampaignDemo';
 import { VibeChart } from '@/components/VibeChart';
-import { PlatformIcon } from '@/components/PlatformIcon';
 import { HeroVisual } from '@/components/HeroVisual';
 import type { Section } from '@/types/content';
 
@@ -143,14 +142,16 @@ function HowItWorks({ section }: { section: Section }) {
       {section.fields.subheading && (
         <p className="mt-5 max-w-2xl text-[1.12rem] leading-relaxed">{section.fields.subheading}</p>
       )}
-      <ol className="mt-10 grid gap-8 sm:grid-cols-3">
+      <ol className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-3">
         {section.items.map((item, index) => (
-          <li key={item.id}>
-            <span className="bg-brand-tint text-brand mb-5 flex h-11 w-11 items-center justify-center rounded-full text-[1.05rem] font-bold">
+          <li key={item.id} className="flex gap-3">
+            <span className="bg-brand-tint text-brand mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[0.85rem] font-bold">
               {index + 1}
             </span>
-            <h3 className="mb-2.5 text-[1.22rem] font-bold">{item.title}</h3>
-            <p className="text-[1.02rem] leading-relaxed">{item.body}</p>
+            <div>
+              <h3 className="mb-1 text-[1.05rem] leading-snug font-bold">{item.title}</h3>
+              <p className="text-[0.95rem] leading-relaxed">{item.body}</p>
+            </div>
           </li>
         ))}
       </ol>
@@ -166,19 +167,21 @@ function Features({ section }: { section: Section }) {
       {section.fields.subheading && (
         <p className="mt-5 max-w-2xl text-[1.12rem] leading-relaxed">{section.fields.subheading}</p>
       )}
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {section.items.map((item) => (
           <article
             key={item.id}
-            className="border-line rounded-card border bg-white p-7 transition-shadow duration-200 hover:shadow-[0_18px_44px_-24px_rgba(16,19,26,0.25)]"
+            className="border-line rounded-card border bg-white p-4 transition-shadow duration-200 hover:shadow-[0_18px_44px_-24px_rgba(16,19,26,0.25)]"
           >
-            {item.icon && (
-              <span className="bg-brand-tint text-brand mb-5 flex h-11 w-11 items-center justify-center rounded-xl">
-                <Icon name={item.icon} className="h-[1.45rem] w-[1.45rem]" />
-              </span>
-            )}
-            <h3 className="mb-2.5 text-[1.18rem] font-bold">{item.title}</h3>
-            <p className="text-[1rem] leading-relaxed">{item.body}</p>
+            <div className="flex items-center gap-2.5">
+              {item.icon && (
+                <span className="bg-brand-tint text-brand flex h-7 w-7 shrink-0 items-center justify-center rounded-md">
+                  <Icon name={item.icon} className="h-[1rem] w-[1rem]" />
+                </span>
+              )}
+              <h3 className="text-[0.98rem] leading-tight font-bold">{item.title}</h3>
+            </div>
+            <p className="mt-2 text-[0.88rem] leading-snug">{item.body}</p>
           </article>
         ))}
       </div>
@@ -226,20 +229,22 @@ function Cta({ section }: { section: Section }) {
 
 function AudienceSplit({ section }: { section: Section }) {
   return (
-    <Shell section={section}>
+    <Shell section={section} className="!py-8 sm:!py-10">
       {section.fields.heading && <h2 className="sr-only">{section.fields.heading}</h2>}
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
         {section.items.map((item) => (
-          <div key={item.id} className="border-line rounded-card border bg-white p-8">
+          <div key={item.id} className="flex items-start gap-3.5">
             {item.icon && (
-              <span className="bg-brand-tint text-brand mb-5 flex h-11 w-11 items-center justify-center rounded-xl">
-                <Icon name={item.icon} className="h-[1.45rem] w-[1.45rem]" />
+              <span className="bg-brand-tint text-brand mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg">
+                <Icon name={item.icon} className="h-[1.2rem] w-[1.2rem]" />
               </span>
             )}
-            <p className="text-brand mb-2 text-[0.78rem] font-bold tracking-[0.16em] uppercase">
-              {item.label}
-            </p>
-            <p className="text-ink text-[1.35rem] leading-snug font-bold">{item.body}</p>
+            <div>
+              <p className="text-brand text-[0.72rem] font-bold tracking-[0.16em] uppercase">
+                {item.label}
+              </p>
+              <p className="text-ink mt-1 text-[1.05rem] leading-snug font-bold">{item.body}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -249,7 +254,7 @@ function AudienceSplit({ section }: { section: Section }) {
 
 function CampaignDemoSection({ section }: { section: Section }) {
   return (
-    <Shell section={section} className="!pt-0">
+    <Shell section={section} className="!border-t-0 !pt-0">
       <CampaignDemo section={section} />
     </Shell>
   );
@@ -302,28 +307,27 @@ function Differentiator({ section }: { section: Section }) {
 
 function DataSources({ section }: { section: Section }) {
   return (
-    <Shell section={section}>
+    <Shell section={section} className="!py-10 sm:!py-12">
       <div className="text-center">
         <Eyebrow>{section.fields.eyebrow}</Eyebrow>
-        <Heading section={section}>{section.fields.heading}</Heading>
+        <h2 className="text-ink text-[1.5rem] leading-snug font-bold sm:text-[1.8rem]">
+          {section.fields.heading}
+        </h2>
         {section.fields.subheading && (
-          <p className="mx-auto mt-4 max-w-xl text-[1.08rem] leading-relaxed">
+          <p className="mx-auto mt-2.5 max-w-xl text-[1rem] leading-relaxed">
             {section.fields.subheading}
           </p>
         )}
-      </div>
-
-      <div className="mt-10 grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {section.items.map((item) => (
-          <div
-            key={item.id}
-            className="border-line rounded-card flex flex-col items-center border bg-white px-4 py-6 text-center"
-          >
-            {item.icon && <PlatformIcon name={item.icon} className="text-ink mb-3.5 h-7 w-7" />}
-            <p className="text-ink text-[1.08rem] font-bold">{item.name}</p>
-            <p className="text-muted mt-1.5 text-[0.86rem] leading-snug">{item.detail}</p>
-          </div>
-        ))}
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          {section.items.map((item) => (
+            <span
+              key={item.id}
+              className="border-line text-ink rounded-full border bg-white px-3.5 py-1.5 text-[0.88rem] font-semibold"
+            >
+              {item.label}
+            </span>
+          ))}
+        </div>
       </div>
     </Shell>
   );
@@ -332,28 +336,23 @@ function DataSources({ section }: { section: Section }) {
 function RequestAccess({ section }: { section: Section }) {
   const f = section.fields;
   return (
-    <Shell section={section}>
-      <div className="mx-auto max-w-2xl">
-        <div className="text-center">
-          <Eyebrow>{f.eyebrow}</Eyebrow>
-          <Heading section={section}>{f.heading}</Heading>
-          {f.subheading && (
-            <p className="mx-auto mt-4 max-w-xl text-[1.08rem] leading-relaxed">{f.subheading}</p>
-          )}
-        </div>
-        <div className="mt-9">
+    <Shell section={section} className="!py-12 sm:!py-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <Eyebrow>{f.eyebrow}</Eyebrow>
+        <h2 className="text-ink text-[1.6rem] leading-tight font-bold sm:text-[2.1rem]">
+          {f.heading}
+        </h2>
+        {f.subheading && (
+          <p className="mx-auto mt-3 max-w-xl text-[1.02rem] leading-relaxed">{f.subheading}</p>
+        )}
+        <div className="mt-7">
           <RequestAccessForm
-            submitLabel={f.submitLabel || 'Send request'}
+            submitLabel={f.submitLabel || 'Request access'}
             successMessage={f.successMessage || 'Thanks, we will be in touch shortly.'}
-            labels={{
-              name: f.nameLabel || 'Name',
-              email: f.emailLabel || 'Email',
-              subject: f.subjectLabel || 'Subject',
-              message: f.messageLabel || 'Message',
-            }}
+            labels={{ name: f.nameLabel || 'Name', email: f.emailLabel || 'Email' }}
           />
         </div>
-        {f.footnote && <p className="text-muted mt-5 text-center text-[0.92rem]">{f.footnote}</p>}
+        {f.footnote && <p className="text-muted mt-4 text-[0.88rem]">{f.footnote}</p>}
       </div>
     </Shell>
   );

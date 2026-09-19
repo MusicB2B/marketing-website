@@ -5,8 +5,13 @@ import { useState } from 'react';
 type State = 'idle' | 'sending' | 'sent' | 'error';
 
 const FIELD =
-  'w-full rounded-xl border border-line-strong bg-white px-4 py-3 text-[1rem] text-ink outline-none transition-colors focus:border-brand';
+  'w-full rounded-lg border border-line-strong bg-white px-3.5 py-2.5 text-[0.95rem] text-ink outline-none transition-colors focus:border-brand';
 
+/**
+ * Name and email only. A message box asks for effort at the exact moment
+ * someone is deciding whether to bother, and we can ask everything else in the
+ * reply.
+ */
 export function RequestAccessForm({
   submitLabel,
   successMessage,
@@ -14,7 +19,7 @@ export function RequestAccessForm({
 }: {
   submitLabel: string;
   successMessage: string;
-  labels: { name: string; email: string; subject: string; message: string };
+  labels: { name: string; email: string };
 }) {
   const [state, setState] = useState<State>('idle');
   const [error, setError] = useState('');
@@ -51,26 +56,26 @@ export function RequestAccessForm({
     return (
       <div
         role="status"
-        className="border-brand/30 bg-brand-tint rounded-card border p-8 text-center"
+        className="border-brand/30 bg-brand-tint rounded-card flex items-center justify-center gap-3 border px-6 py-5 text-center"
       >
-        <span className="bg-brand mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full text-white">
+        <span className="bg-brand flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white">
           <svg
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2.5"
-            className="h-5 w-5"
+            strokeWidth="3"
+            className="h-3.5 w-3.5"
           >
             <path d="m5 12 5 5L19 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
-        <p className="text-ink text-[1.1rem] font-bold">{successMessage}</p>
+        <p className="text-ink text-[1rem] font-bold">{successMessage}</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={submit} className="border-line rounded-card border bg-white p-6 sm:p-8">
+    <form onSubmit={submit} className="w-full">
       {/* Honeypot — hidden from people, tempting to bots. */}
       <input
         type="text"
@@ -81,53 +86,44 @@ export function RequestAccessForm({
         className="absolute h-0 w-0 overflow-hidden opacity-0"
       />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-2.5 sm:grid-cols-[1fr_1fr_auto]">
         <label className="block">
-          <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.name}</span>
-          <input name="name" required maxLength={100} autoComplete="name" className={FIELD} />
+          <span className="sr-only">{labels.name}</span>
+          <input
+            name="name"
+            required
+            maxLength={100}
+            autoComplete="name"
+            placeholder={labels.name}
+            className={FIELD}
+          />
         </label>
         <label className="block">
-          <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.email}</span>
+          <span className="sr-only">{labels.email}</span>
           <input
             name="email"
             type="email"
             required
             maxLength={200}
             autoComplete="email"
+            placeholder={labels.email}
             className={FIELD}
           />
         </label>
+        <button
+          type="submit"
+          disabled={state === 'sending'}
+          className="bg-brand hover:bg-brand-dark rounded-lg px-6 py-2.5 text-[0.95rem] font-semibold whitespace-nowrap text-white transition-colors disabled:opacity-50"
+        >
+          {state === 'sending' ? 'Sending…' : submitLabel}
+        </button>
       </div>
 
-      <label className="mt-4 block">
-        <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.subject}</span>
-        <input name="subject" required maxLength={150} className={FIELD} />
-      </label>
-
-      <label className="mt-4 block">
-        <span className="text-ink mb-1.5 block text-[0.88rem] font-semibold">{labels.message}</span>
-        <textarea
-          name="message"
-          required
-          rows={5}
-          maxLength={4000}
-          className={`${FIELD} resize-y`}
-        />
-      </label>
-
       {error && (
-        <p role="alert" className="mt-4 text-[0.92rem] font-medium text-red-600">
+        <p role="alert" className="mt-3 text-[0.9rem] font-medium text-red-600">
           {error}
         </p>
       )}
-
-      <button
-        type="submit"
-        disabled={state === 'sending'}
-        className="bg-brand hover:bg-brand-dark mt-6 w-full rounded-xl py-3.5 text-[1.05rem] font-semibold text-white transition-colors disabled:opacity-50"
-      >
-        {state === 'sending' ? 'Sending…' : submitLabel}
-      </button>
     </form>
   );
 }

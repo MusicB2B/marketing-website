@@ -321,40 +321,30 @@
         "theme": "tint"
       },
       "fields": {
-        "eyebrow": "Built on real data",
-        "heading": "The platforms that matter.",
-        "subheading": "Real-time audience data, not self-reported numbers."
+        "eyebrow": "",
+        "heading": "Built on real data",
+        "subheading": "Real-time audience data that matters."
       },
       "items": [
         {
           "id": "s1",
-          "icon": "spotify",
-          "name": "Spotify",
-          "detail": "Listeners & followers"
+          "label": "Listeners & followers"
         },
         {
           "id": "s2",
-          "icon": "instagram",
-          "name": "Instagram",
-          "detail": "Audience demographics"
+          "label": "Audience demographics"
         },
         {
           "id": "s3",
-          "icon": "tiktok",
-          "name": "TikTok",
-          "detail": "Engagement & reach"
+          "label": "Engagement & reach"
         },
         {
           "id": "s4",
-          "icon": "youtube",
-          "name": "YouTube",
-          "detail": "Views & subscribers"
+          "label": "Views & subscribers"
         },
         {
           "id": "s5",
-          "icon": "analytics",
-          "name": "Chartmetric",
-          "detail": "Career analytics"
+          "label": "Career analytics"
         }
       ]
     },
@@ -364,19 +354,17 @@
       "visible": true,
       "style": {
         "align": "center",
-        "scale": "lg",
+        "scale": "md",
         "theme": "light"
       },
       "fields": {
-        "eyebrow": "Request access",
+        "eyebrow": "Early access",
         "heading": "Find your next partnership.",
-        "subheading": "Tell us who you are and what you're working on. We read every one.",
+        "subheading": "We're still building. Leave your details and we'll get you in early.",
         "nameLabel": "Name",
         "emailLabel": "Email",
-        "subjectLabel": "Subject",
-        "messageLabel": "Message",
-        "submitLabel": "Request Access",
-        "successMessage": "Thanks, we've got it. We'll be in touch shortly.",
+        "submitLabel": "Request access",
+        "successMessage": "Thanks, you're on the list.",
         "footnote": "No credit card. No commitment."
       },
       "items": []

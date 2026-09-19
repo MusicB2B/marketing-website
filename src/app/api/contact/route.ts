@@ -41,11 +41,13 @@ export async function POST(request: Request) {
 
   const name = field(body.name, 'name');
   const email = field(body.email, 'email');
-  const subject = field(body.subject, 'subject');
-  const message = field(body.message, 'message');
+  // The form asks for name and email only; the rest stays supported so an
+  // older client, or a future longer form, still works.
+  const subject = field(body.subject, 'subject') ?? 'Early access request';
+  const message = field(body.message, 'message') ?? '(no message)';
 
-  if (!name || !email || !subject || !message) {
-    return NextResponse.json({ error: 'Please fill in every field.' }, { status: 400 });
+  if (!name || !email) {
+    return NextResponse.json({ error: 'Please fill in both fields.' }, { status: 400 });
   }
   if (!EMAIL.test(email)) {
     return NextResponse.json({ error: 'That email address looks wrong.' }, { status: 400 });

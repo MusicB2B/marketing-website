@@ -242,13 +242,9 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
       { key: 'subheading', label: 'Intro', input: 'textarea' },
     ],
     item: {
-      noun: 'source',
+      noun: 'data point',
       max: 8,
-      fields: [
-        { key: 'icon', label: 'Logo', input: 'select', options: [...PLATFORM_OPTIONS] },
-        { key: 'name', label: 'Platform', input: 'text' },
-        { key: 'detail', label: 'What we use', input: 'text' },
-      ],
+      fields: [{ key: 'label', label: 'What we use', input: 'text' }],
     },
   },
   campaignDemo: {
@@ -298,8 +294,6 @@ export const SECTION_SCHEMA: Record<SectionType, SectionSpec> = {
       { key: 'subheading', label: 'Intro', input: 'textarea' },
       { key: 'nameLabel', label: 'Form: name field', input: 'text' },
       { key: 'emailLabel', label: 'Form: email field', input: 'text' },
-      { key: 'subjectLabel', label: 'Form: subject field', input: 'text' },
-      { key: 'messageLabel', label: 'Form: message field', input: 'text' },
       { key: 'submitLabel', label: 'Submit button', input: 'text' },
       {
         key: 'successMessage',
