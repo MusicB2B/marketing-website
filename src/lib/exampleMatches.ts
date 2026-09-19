@@ -29,7 +29,7 @@ export interface ExampleMatch {
 /** Fallback tints, keyed by video file, so a slow load is never a black box. */
 const TINTS: Record<string, string> = {
   'adidas-campaign': 'linear-gradient(135deg,#3f4550,#1b1f27)',
-  'fred-again-live': 'linear-gradient(135deg,#4a3f6b,#1d1a2b)',
+  'fakemink-live': 'linear-gradient(135deg,#3b2f52,#17131f)',
   'spindrift-campaign': 'linear-gradient(135deg,#e8c93f,#c9a227)',
   'men-i-trust-live': 'linear-gradient(135deg,#2b2f3a,#11141b)',
   'bulleit-campaign': 'linear-gradient(135deg,#a8642a,#5d3416)',

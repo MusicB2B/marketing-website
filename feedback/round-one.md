@@ -34,14 +34,14 @@ Received 19 September 2026.
 
 ## Tracked items
 
-| #   | Note                                                    | Status    |
-| --- | ------------------------------------------------------- | --------- |
-| 1   | Swap Fred Again for a less mainstream artist            | Part done |
-| 2   | Move Brands/Artists split up, and make it smaller       | To do     |
-| 3   | Join the brief graphic to the three steps, tighten them | To do     |
-| 4   | Condense the six matching-engine cards to a third depth | To do     |
-| 5   | Stop naming data sources; condense that section         | To do     |
-| 6   | Shrink the form: horizontal, no message field           | To do     |
+| #   | Note                                                    | Status |
+| --- | ------------------------------------------------------- | ------ |
+| 1   | Swap Fred Again for a less mainstream artist            | Done*  |
+| 2   | Move Brands/Artists split up, and make it smaller       | To do  |
+| 3   | Join the brief graphic to the three steps, tighten them | To do  |
+| 4   | Condense the six matching-engine cards to a third depth | To do  |
+| 5   | Stop naming data sources; condense that section         | To do  |
+| 6   | Shrink the form: horizontal, no message field           | To do  |
 
 **1 is blocked** on two decisions only David and Jules can make: which artist
 replaces Fred Again, and a clip to go with them. The current clip is
@@ -90,3 +90,50 @@ The wider point Jules makes is worth keeping either way: the three examples
 should demonstrate three different things the engine can find — cultural
 discovery, aesthetic alignment, and genre/geography/occasion — rather than
 three versions of "these two feel like they go together."
+
+## Item 1 — resolved: fakemink
+
+Fred Again is replaced by **fakemink**, a UK underground rapper, chosen by
+working backwards from the Adidas Originals consumer rather than hunting for a
+convenient name.
+
+Verified independently before use:
+
+- Dazed reports 696% UK stream growth and 3,830% global over twelve months,
+  with the US now his biggest audience, and describes an overwhelmingly Gen Z
+  crowd at his shows.
+- Searches for an Adidas, Nike or Puma relationship surfaced nothing. A
+  negative result, not proof, but two independent passes agreed.
+
+Ruled out along the way: Mogan, whose Factory Sounds work is explicitly backed
+by adidas Originals and confirmed by their own post; Barry Can't Swim and
+George Riley for comparable reasons; Aziya, who is clean but sits in the same
+indie lane as Men I Trust.
+
+The reason this works is not the name. Fred Again invited "obviously Adidas
+could work with Fred Again." fakemink invites "why fakemink?", and the card
+answers it: a young, streetwear-oriented, digitally native audience that looks
+like the consumer Adidas Originals describes wanting. That is the engine
+appearing to find something, which is the entire pitch.
+
+Score stays at 89: this is the pairing where a high number is conceptually
+earned.
+
+The rotation now spans three separate musical worlds:
+
+| Example                        | Genre                | What it shows                       |
+| ------------------------------ | -------------------- | ----------------------------------- |
+| Adidas Originals × fakemink    | UK rap / underground | Gen Z, streetwear, internet culture |
+| Spindrift × Men I Trust        | Indie / alternative  | Lifestyle and aesthetic alignment   |
+| Bulleit Bourbon × Carter Faith | Country / Americana  | Genre, geography and occasion       |
+
+**\*Outstanding:** `public/matches/fakemink-live.mp4` does not exist. Until it
+does that panel shows its fallback tint rather than footage.
+`fred-again-live.mp4` has been deleted.
+
+**Worth a decision:** the brief graphic lower down still ranks Kojey Radical,
+Omar+, Knucks and RUBII, all UK rap. With fakemink in the hero, UK rap now
+appears in both places. That is the same breadth objection that ruled out
+Aziya, applied to the page as a whole rather than the rotation. Mixing the
+ranked list would spread it; leaving it is defensible since that graphic is
+answering one specific brief.
