@@ -28,7 +28,7 @@
       "fields": {
         "eyebrow": "Artists & brands. Louder together.",
         "heading": "Where brands & artists meet.",
-        "subheading": "Data-driven artist and brand partnerships, matching across demographics, interests, geography, plus vibe, aesthetic, and cultural fit.",
+        "subheading": "Data-driven artist and brand partnerships, matching across demographics, interests, geography - plus vibe, aesthetic, and cultural fit.",
         "primaryLabel": "Join the waitlist",
         "primaryHref": "#request-access",
         "secondaryLabel": "",
@@ -116,13 +116,13 @@
           "id": "w1",
           "label": "Brands",
           "body": "Find artists whose audiences would love what you offer",
-          "icon": "target"
+          "icon": "users"
         },
         {
           "id": "w2",
           "label": "Artists",
           "body": "Partner with brands your fans already want to hear from",
-          "icon": "users"
+          "icon": "exchange"
         }
       ]
     },
