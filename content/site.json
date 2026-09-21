@@ -29,11 +29,11 @@
         "eyebrow": "Artists & brands. Louder together.",
         "heading": "Where brands & artists meet.",
         "subheading": "Data-driven matching across demographics, interests, geography, and the intangibles: vibe, aesthetic, and cultural fit.",
-        "primaryLabel": "Request Access",
+        "primaryLabel": "Join the waitlist",
         "primaryHref": "#request-access",
         "secondaryLabel": "",
         "secondaryHref": "",
-        "footnote": "We're onboarding brands and artists now.",
+        "footnote": "",
         "visual": "livePanel",
         "visualImage": "/images/header-static.png",
         "visualImageAlt": "A country artist playing guitar beside a whiskey brand still, joined by the Fanbased mark, showing a 74% audience fit between them.",
@@ -115,13 +115,13 @@
         {
           "id": "w1",
           "label": "Brands",
-          "body": "Find artists whose audiences are already your customers.",
+          "body": "Find artists whose audiences would love what you offer",
           "icon": "target"
         },
         {
           "id": "w2",
           "label": "Artists",
-          "body": "Get discovered by brands that genuinely fit your fanbase.",
+          "body": "Partner with brands your fans already want to hear from",
           "icon": "users"
         }
       ]
@@ -138,23 +138,23 @@
       "fields": {
         "eyebrow": "How it works",
         "heading": "From brief to shortlist in minutes.",
-        "subheading": "You define the campaign and ideal audience. Our engine scores and ranks artists by real fanbase alignment."
+        "subheading": "Brands define the campaign and ideal audience. Our system scores, matches and ranks artists using verified fanbase data."
       },
       "items": [
         {
           "id": "s1",
           "title": "Set the brief",
-          "body": "Market position, target age, gender split, regions and brand tone. Takes about two minutes."
+          "body": "Upload the target demographic, regions, market positioning and brand tone."
         },
         {
           "id": "s2",
           "title": "We score the overlap",
-          "body": "The engine compares your campaign against real artist audience data, not follower counts."
+          "body": "Our system sifts through audience metrics and across dimensions like interests and emotional tone."
         },
         {
           "id": "s3",
           "title": "Get a ranked shortlist",
-          "body": "Every match comes with a score and the signals behind it, so you can defend the pick."
+          "body": "Fanbased delivers a shortlist of the most aligned matches with a score and the reasons behind it."
         }
       ]
     },
@@ -230,10 +230,10 @@
         "theme": "light"
       },
       "fields": {
-        "eyebrow": "What makes us different",
+        "eyebrow": "",
         "heading": "Beyond demographics. We match on meaning.",
-        "bodyOne": "Most platforms stop at audience numbers. But a perfect demographic overlap means nothing if the brand tone clashes with the artist's identity. Audiences notice, and so does performance.",
-        "bodyTwo": "Fanbased evaluates the qualitative signals that traditional tools can't measure. Brands justify every partnership with transparent reasoning. Artists protect their authenticity with data, not just gut feel.",
+        "bodyOne": "Demographic overlap isn't enough if the brand clashes with the artist's identity. ",
+        "bodyTwo": "FanBased evaluates qualitative signals such as vibe, emotional tone, and cultural alignment, and combines these inputs with fan data to create more successful matches.",
         "chartTitle": "Brand vs Artist Vibes",
         "chartSubtitle": "Real output from the Fanbased matching engine",
         "chartLegendCampaign": "Campaign",
@@ -250,18 +250,14 @@
         },
         {
           "id": "d3",
-          "text": "Cultural credibility, not just business alignment"
-        },
-        {
-          "id": "d4",
-          "text": "Full explainability: see exactly why every match scores the way it does"
+          "text": "Cultural credibility"
         }
       ]
     },
     {
       "id": "features",
       "type": "features",
-      "visible": true,
+      "visible": false,
       "style": {
         "align": "left",
         "scale": "md",
@@ -323,7 +319,7 @@
       "fields": {
         "eyebrow": "",
         "heading": "Built on real data",
-        "subheading": "Real-time audience data that matters."
+        "subheading": "Verified audience data that matters."
       },
       "items": [
         {
@@ -360,12 +356,12 @@
       "fields": {
         "eyebrow": "Early access",
         "heading": "Find your next partnership.",
-        "subheading": "We're still building. Leave your details and we'll get you in early.",
+        "subheading": "We're in active development. Leave your details and we'll get you in early.",
         "nameLabel": "Name",
         "emailLabel": "Email",
-        "submitLabel": "Request access",
+        "submitLabel": "Join the Waitlist",
         "successMessage": "Thanks, you're on the list.",
-        "footnote": "No credit card. No commitment."
+        "footnote": ""
       },
       "items": []
     }
