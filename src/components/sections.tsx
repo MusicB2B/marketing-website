@@ -240,10 +240,10 @@ function AudienceSplit({ section }: { section: Section }) {
               </span>
             )}
             <div>
-              <p className="text-brand text-[0.72rem] font-bold tracking-[0.16em] uppercase">
+              <p className="text-brand text-[1.15rem] leading-none font-bold tracking-[0.06em] uppercase sm:text-[1.3rem]">
                 {item.label}
               </p>
-              <p className="text-ink mt-1 text-[1.05rem] leading-snug font-bold">{item.body}</p>
+              <p className="text-body mt-2 text-[1.02rem] leading-snug font-medium">{item.body}</p>
             </div>
           </div>
         ))}

@@ -6,7 +6,7 @@
  */
 const VIBES = [
   { label: 'Energetic', campaign: 70, artist: 80 },
-  { label: 'Elegant', campaign: 80, artist: 0 },
+  { label: 'Elegant', campaign: 80, artist: 75 },
   { label: 'Bold', campaign: 85, artist: 85 },
   { label: 'Urban', campaign: 75, artist: 90 },
   { label: 'Global', campaign: 90, artist: 75 },
