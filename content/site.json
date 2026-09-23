@@ -138,23 +138,23 @@
       "fields": {
         "eyebrow": "How it works",
         "heading": "From brief to shortlist in minutes.",
-        "subheading": "Brands define the campaign and ideal audience. Our system scores, matches and ranks artists using verified fanbase data."
+        "subheading": "Brands define the campaign and ideal audience. The Fanbased system scores, matches and ranks artists using verified fanbase data and our artist vibe analysis."
       },
       "items": [
         {
           "id": "s1",
           "title": "Set the brief",
-          "body": "Upload the target demographic, regions, market positioning and brand tone."
+          "body": "Upload the target demographic, regions, market positioning, partnership details and brand aesthetic."
         },
         {
           "id": "s2",
           "title": "We score the overlap",
-          "body": "Our system sifts through audience metrics and across dimensions like interests and emotional tone."
+          "body": "Our system sifts through audience metrics, and across dimensions like interests and emotional tone."
         },
         {
           "id": "s3",
           "title": "Get a ranked shortlist",
-          "body": "Fanbased delivers a shortlist of the most aligned matches with a score and the reasons behind it."
+          "body": "We deliver a shortlist of the most aligned matches, with a score and the reasons behind it."
         }
       ]
     },
