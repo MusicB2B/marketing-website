@@ -82,8 +82,9 @@ function parseSection(value: unknown, index: number): Section {
       if (!isRecord(rawItem)) throw new ValidationError(`${label}.items[${itemIndex}] is invalid`);
       const item: SectionItem = { id: str(rawItem.id ?? '', `${label}.items[${itemIndex}].id`) };
       for (const field of spec.item!.fields) {
-        item[field.key] = str(
-          rawItem[field.key] ?? '',
+        item[field.key] = fieldValue(
+          rawItem[field.key],
+          field,
           `${label}.items[${itemIndex}].${field.key}`,
         );
       }

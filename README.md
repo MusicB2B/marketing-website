@@ -108,6 +108,8 @@ Email on that domain keeps working, because MX records are untouched.
 npm run dev          # dev server on :3000
 npm run build        # production build
 npm run build:check  # production build into .next-verify, then clean up
+npm test             # unit tests (vitest)
+npm run test:watch   # unit tests, watching for changes
 npm run start        # serve the production build
 npm run typecheck    # tsc --noEmit
 npm run lint         # next lint
