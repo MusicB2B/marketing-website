@@ -1,0 +1,80 @@
+name: Monitor
+
+# Runs from GitHub rather than from the site itself, so it still reports when
+# the site is the thing that is down.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: monitor
+  cancel-in-progress: true
+
+env:
+  SITE: https://fanbasedhq.com
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Home page responds and renders its content
+        id: home
+        run: |
+          body=$(mktemp)
+          code=$(curl -sS --max-time 25 -o "$body" -w '%{http_code}' "$SITE")
+          echo "HTTP $code"
+          [ "$code" = "200" ] || { echo "FAIL: home returned $code"; exit 1; }
+          # A 200 that renders nothing is still an outage as far as a visitor is concerned.
+          grep -q 'Where brands' "$body" || { echo "FAIL: hero copy missing"; exit 1; }
+          grep -q 'Request access' "$body" || { echo "FAIL: call to action missing"; exit 1; }
+
+      - name: Health endpoint reports every subsystem ok
+        id: health
+        run: |
+          body=$(mktemp)
+          code=$(curl -sS --max-time 25 -o "$body" -w '%{http_code}' "$SITE/api/health")
+          cat "$body"; echo
+          [ "$code" = "200" ] || { echo "FAIL: health returned $code"; exit 1; }
+
+      # The authoring route's path is kept out of this repository, so it comes
+      # from a secret. The step no-ops if that secret is not set.
+      - name: Authoring route still presents its login
+        env:
+          AUTH_PATH: ${{ secrets.EDITOR_PATH }}
+        run: |
+          if [ -z "$AUTH_PATH" ]; then echo "EDITOR_PATH not set; skipping."; exit 0; fi
+          body=$(mktemp)
+          code=$(curl -sS --max-time 25 -o "$body" -w '%{http_code}' "$SITE$AUTH_PATH")
+          [ "$code" = "200" ] || { echo "FAIL: authoring route returned $code"; exit 1; }
+          grep -qi 'password' "$body" || { echo "FAIL: login was not presented"; exit 1; }
+
+      - name: Contact form rejects an invalid submission
+        run: |
+          code=$(curl -sS --max-time 25 -o /dev/null -w '%{http_code}' \
+            -X POST "$SITE/api/contact" \
+            -H 'Content-Type: application/json' \
+            -d '{"name":"monitor","email":"not-an-email"}')
+          # 400 proves the endpoint is alive and validating, without sending anything.
+          [ "$code" = "400" ] || { echo "FAIL: contact endpoint answered $code, expected 400"; exit 1; }
+
+      - name: Email the team if anything above failed
+        if: failure()
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          ALERT_TO: ${{ secrets.ALERT_EMAIL }}
+        run: |
+          if [ -z "$RESEND_API_KEY" ] || [ -z "$ALERT_TO" ]; then
+            echo "No alert credentials set; relying on GitHub's own failure notification."
+            exit 0
+          fi
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          curl -sS -X POST https://api.resend.com/emails \
+            -H "Authorization: Bearer $RESEND_API_KEY" \
+            -H 'Content-Type: application/json' \
+            -d "{
+              \"from\": \"Fanbased monitor <onboarding@resend.dev>\",
+              \"to\": [\"$ALERT_TO\"],
+              \"subject\": \"Fanbased site check FAILED\",
+              \"html\": \"<p>A scheduled check against <strong>$SITE</strong> failed.</p><p><a href=\\\"$run_url\\\">See which step failed</a></p>\"
+            }"
