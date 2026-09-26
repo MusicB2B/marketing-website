@@ -21,18 +21,20 @@ type Check = 'ok' | 'misconfigured' | 'failing';
  * Nothing here reveals a secret: every check reports only ok / misconfigured /
  * failing.
  */
-async function checkMail(): Promise<Check> {
+async function checkMail(): Promise<{ state: Check; status?: number }> {
   const key = process.env.RESEND_API_KEY;
-  if (!key || !process.env.CONTACT_EMAIL) return 'misconfigured';
+  if (!key || !process.env.CONTACT_EMAIL) return { state: 'misconfigured' };
   try {
-    // Read-only, sends nothing, and 401s on a dead key.
+    // Read-only and sends nothing. A sending-only key cannot list domains, so
+    // 403 still means the key authenticated — only 401 says it is dead.
     const response = await fetch('https://api.resend.com/domains', {
       headers: { Authorization: `Bearer ${key}` },
       cache: 'no-store',
     });
-    return response.ok ? 'ok' : 'failing';
+    if (response.ok || response.status === 403) return { state: 'ok', status: response.status };
+    return { state: 'failing', status: response.status };
   } catch {
-    return 'failing';
+    return { state: 'failing' };
   }
 }
 
@@ -62,9 +64,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
+  const mail = await checkMail();
   const checks = {
     content: checkContent(),
-    mail: await checkMail(),
+    mail: mail.state,
     publishing: checkPublishing(),
     editor: checkEditor(),
   };
@@ -72,7 +75,7 @@ export async function GET(request: Request) {
   const ok = Object.values(checks).every((check) => check === 'ok');
 
   return NextResponse.json(
-    { ok, checks, checkedAt: new Date().toISOString() },
+    { ok, checks, mailStatus: mail.status, checkedAt: new Date().toISOString() },
     { status: ok ? 200 : 503, headers: { 'Cache-Control': 'no-store' } },
   );
 }
