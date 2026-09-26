@@ -10,8 +10,8 @@
   --color-brand-dark: #12813b; /* darkened for hover */
   --color-brand-accent: #22c55e; /* colors.brand.accent */
   --color-brand-tint: #dcfce7; /* colors.brand.secondary */
-  --color-artist: #d94674; /* colors.artist.primary */
-  --color-campaign: #7a7ce0; /* the campaign series in the vibe chart */
+  --color-artist: #5e5ce6; /* colors.artist.primary, executive theme */
+  --color-campaign: #5e5ce6; /* colors.artist.primary, executive theme */
 
   --color-ink: #18181b; /* colors.text.primary */
   --color-body: #52525b; /* colors.text.secondary */
