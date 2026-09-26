@@ -21,21 +21,23 @@ type Check = 'ok' | 'misconfigured' | 'failing';
  * Nothing here reveals a secret: every check reports only ok / misconfigured /
  * failing.
  */
-async function checkMail(): Promise<{ state: Check; status?: number }> {
-  const key = process.env.RESEND_API_KEY;
-  if (!key || !process.env.CONTACT_EMAIL) return { state: 'misconfigured' };
-  try {
-    // Read-only and sends nothing. A sending-only key cannot list domains, so
-    // 403 still means the key authenticated — only 401 says it is dead.
-    const response = await fetch('https://api.resend.com/domains', {
-      headers: { Authorization: `Bearer ${key}` },
-      cache: 'no-store',
-    });
-    if (response.ok || response.status === 403) return { state: 'ok', status: response.status };
-    return { state: 'failing', status: response.status };
-  } catch {
-    return { state: 'failing' };
-  }
+/**
+ * Mail is reported on configuration alone, deliberately.
+ *
+ * There is no Resend endpoint that a sending-only key can read: probing
+ * /domains with one returns 401, exactly as a revoked key does, so a liveness
+ * probe cannot tell a healthy key from a dead one. An earlier version did
+ * exactly that and reported a working form as broken. A check that cries wolf
+ * every half hour is worse than no check, because it trains everyone to ignore
+ * the alerts.
+ *
+ * Do not re-add an API probe here without first confirming Resend has an
+ * endpoint a sending-only key can read. The form's liveness is covered
+ * separately: the monitor posts an invalid submission and asserts a 400, which
+ * proves the route is up and validating without sending anything.
+ */
+function checkMail(): Check {
+  return process.env.RESEND_API_KEY && process.env.CONTACT_EMAIL ? 'ok' : 'misconfigured';
 }
 
 function checkContent(): Check {
@@ -64,10 +66,9 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Too many requests.' }, { status: 429 });
   }
 
-  const mail = await checkMail();
   const checks = {
     content: checkContent(),
-    mail: mail.state,
+    mail: checkMail(),
     publishing: checkPublishing(),
     editor: checkEditor(),
   };
@@ -75,7 +76,7 @@ export async function GET(request: Request) {
   const ok = Object.values(checks).every((check) => check === 'ok');
 
   return NextResponse.json(
-    { ok, checks, mailStatus: mail.status, checkedAt: new Date().toISOString() },
+    { ok, checks, checkedAt: new Date().toISOString() },
     { status: ok ? 200 : 503, headers: { 'Cache-Control': 'no-store' } },
   );
 }
