@@ -127,12 +127,30 @@ export function LiveMatchPanel({
 }) {
   const matches = toExampleMatches(items);
   const [index, setIndex] = useState(0);
-  const [infoOpen, setInfoOpen] = useState(false);
+  const [infoPinned, setInfoPinned] = useState(false);
+  const [infoPeek, setInfoPeek] = useState(false);
+  const peekTimer = useRef<number | undefined>(undefined);
   const [score, setScore] = useState(0);
   const [onScreen, setOnScreen] = useState(false);
   const [tabActive, setTabActive] = useState(true);
   const panelRef = useRef<HTMLElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
+
+  // Clicking pins it; hover and keyboard focus only peek.
+  const infoOpen = infoPinned || infoPeek;
+
+  // A small delay bridges the gap between the button and the popover, so
+  // moving the pointer from one to the other does not flicker it shut.
+  const peek = useCallback((on: boolean) => {
+    window.clearTimeout(peekTimer.current);
+    if (on) {
+      setInfoPeek(true);
+    } else {
+      peekTimer.current = window.setTimeout(() => setInfoPeek(false), 140);
+    }
+  }, []);
+
+  useEffect(() => () => window.clearTimeout(peekTimer.current), []);
   const reducedMotion = useReducedMotion();
 
   const match = matches[index % matches.length]!;
@@ -173,14 +191,20 @@ export function LiveMatchPanel({
   useEffect(() => {
     if (!infoOpen) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setInfoOpen(false);
+      if (event.key === 'Escape') {
+        setInfoPinned(false);
+        setInfoPeek(false);
+      }
     };
     const onPointer = (event: PointerEvent) => {
       const target = event.target as Node;
       if (infoRef.current?.contains(target)) return;
       // The button toggles itself; let its own handler deal with that click.
       if ((target as HTMLElement).closest?.('[aria-label="About these examples"]')) return;
-      setInfoOpen(false);
+      {
+        setInfoPinned(false);
+        setInfoPeek(false);
+      }
     };
     document.addEventListener('keydown', onKey);
     document.addEventListener('pointerdown', onPointer);
@@ -225,9 +249,13 @@ export function LiveMatchPanel({
           </p>
           <button
             type="button"
-            onClick={() => setInfoOpen((open) => !open)}
+            onClick={() => setInfoPinned((pinned) => !pinned)}
             aria-expanded={infoOpen}
             aria-label="About these examples"
+            onMouseEnter={() => peek(true)}
+            onMouseLeave={() => peek(false)}
+            onFocus={() => peek(true)}
+            onBlur={() => peek(false)}
             className={`flex h-[1.05rem] w-[1.05rem] shrink-0 items-center justify-center rounded-full border text-[0.62rem] font-black transition-colors ${
               infoOpen
                 ? 'border-brand bg-brand text-white'
@@ -248,12 +276,17 @@ export function LiveMatchPanel({
           <div
             ref={infoRef}
             role="note"
+            onMouseEnter={() => peek(true)}
+            onMouseLeave={() => peek(false)}
             className="border-line absolute top-full left-0 z-30 mt-2 w-[min(22rem,calc(100%-1rem))] rounded-xl border bg-white p-4 shadow-[0_18px_50px_-12px_rgba(0,0,0,0.35)]"
           >
             <p className="text-body text-[0.8rem] leading-relaxed">{disclaimer}</p>
             <button
               type="button"
-              onClick={() => setInfoOpen(false)}
+              onClick={() => {
+                setInfoPinned(false);
+                setInfoPeek(false);
+              }}
               className="text-brand mt-2.5 text-[0.78rem] font-bold"
             >
               Close
