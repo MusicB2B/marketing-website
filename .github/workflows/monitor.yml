@@ -18,16 +18,25 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Home page responds and renders its content
-        id: home
+      # Asserts on structure, never on copy. Every word on this site is
+      # editable by the marketing team, so grepping for a phrase means the
+      # monitor fails the next time somebody edits it — a false alarm caused by
+      # the product working as designed. These markers survive any edit.
+      - name: Home page responds and renders a real page
         run: |
           body=$(mktemp)
           code=$(curl -sS --max-time 25 -o "$body" -w '%{http_code}' "$SITE")
           echo "HTTP $code"
           [ "$code" = "200" ] || { echo "FAIL: home returned $code"; exit 1; }
-          # A 200 that renders nothing is still an outage as far as a visitor is concerned.
-          grep -q 'Where brands' "$body" || { echo "FAIL: hero copy missing"; exit 1; }
-          grep -q 'Request access' "$body" || { echo "FAIL: call to action missing"; exit 1; }
+
+          grep -q '<main' "$body" || { echo "FAIL: no <main> element"; exit 1; }
+
+          sections=$(grep -o '<section' "$body" | wc -l | tr -d ' ')
+          echo "sections rendered: $sections"
+          [ "$sections" -ge 5 ] || { echo "FAIL: only $sections sections, expected 5+"; exit 1; }
+
+          # The enquiry form is the page's whole commercial purpose.
+          grep -q 'name="email"' "$body" || { echo "FAIL: email capture field missing"; exit 1; }
 
       - name: Health endpoint reports every subsystem ok
         id: health
