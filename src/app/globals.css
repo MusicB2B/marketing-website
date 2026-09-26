@@ -6,10 +6,10 @@
  * theme changes, change these to match.
  */
 @theme {
-  --color-brand: #16a34a; /* colors.brand.primary */
-  --color-brand-dark: #12813b; /* darkened for hover */
+  --color-brand: #00c26e; /* colors.brand.primary, executive theme */
+  --color-brand-dark: #00a15c; /* darkened for hover */
   --color-brand-accent: #22c55e; /* colors.brand.accent */
-  --color-brand-tint: #dcfce7; /* colors.brand.secondary */
+  --color-brand-tint: #e0f8ee; /* pale wash derived from brand.primary */
   --color-artist: #5e5ce6; /* colors.artist.primary, executive theme */
   --color-campaign: #5e5ce6; /* colors.artist.primary, executive theme */
 
