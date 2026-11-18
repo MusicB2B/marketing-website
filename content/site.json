@@ -175,11 +175,11 @@
         "row2Label": "Primary age",
         "row2Value": "18–24",
         "row3Label": "Gender split",
-        "row3Value": "50/50",
+        "row3Value": "55 F / 45 M",
         "row4Label": "Target markets",
-        "row4Value": "GB, US, FR",
+        "row4Value": "GB, FR, US",
         "toneLabel": "Brand tone",
-        "tones": "Confident, Refined, Creative, Understated, Culturally relevant",
+        "tones": "Bold, Cinematic, Confident, , Empowering, Creative,   Understated,   Culturally Relevant",
         "matchesHeading": "Ranked artist matches",
         "matchesCount": "Showing 4 of 10",
         "scoreLabel": "Match score",
@@ -190,33 +190,33 @@
           "id": "m1",
           "initials": "KR",
           "name": "Kojey Radical",
-          "note": "Strong female GB alignment",
-          "tags": "Female 29%, GB 93%, Vibe: Bold",
-          "score": "88.4%"
+          "note": "Strong female GB & vibe alignment",
+          "tags": "Female 56%, GB 85%, Vibes: Bold - Cinematic - Empowering",
+          "score": "91.6%"
         },
         {
           "id": "m2",
           "initials": "O+",
           "name": "Omar+",
-          "note": "Strong female GB alignment",
-          "tags": "Female 32%, GB 94%, Vibe: Elegant",
+          "note": "Strong female FR & vibe alignment",
+          "tags": "Female 54%, FR 81%, Vibes: Creative - Understated - Bold",
           "score": "88.4%"
         },
         {
           "id": "m3",
           "initials": "KN",
           "name": "Knucks",
-          "note": "Strong male GB alignment",
-          "tags": "Male 39%, GB 96%, Vibe: Urban",
+          "note": "Strong male GB & vibe alignment",
+          "tags": "Male 47%, GB 79%, Vibes: Urban - Culturally Relevant",
           "score": "87.9%"
         },
         {
           "id": "m4",
           "initials": "RB",
           "name": "RUBII",
-          "note": "Strong female GB alignment",
-          "tags": "Female 29%, GB 73%",
-          "score": "86.7%"
+          "note": "Strong female US & vibe alignment",
+          "tags": "Female 53%, US 72%, Vibes: Confident - Empowering - Creative",
+          "score": "85.3%"
         }
       ]
     },
